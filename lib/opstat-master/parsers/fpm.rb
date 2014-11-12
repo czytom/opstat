@@ -6,13 +6,12 @@ module Parsers
 
     def save_data(data)
       begin
-        return if data.nil?
-	report = {}
-	report[:pools] = []
+        return [] if data.nil?
+	reports = []
         oplogger.debug data
         data.each_pair do |pool, stats|
           values = JSON::parse(stats)
-          report[:pools] << {
+          reports << {
 	    :pool => values['pool'],
 	    :accepted_connections => values['accepted conn'],
 	    :listen_queue => values['listen queue'],
@@ -27,7 +26,7 @@ module Parsers
       end
       rescue
 	#TODO - set some error message in db
-      return report
+      return reports
     end
   end
 end

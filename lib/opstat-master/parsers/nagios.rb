@@ -3,8 +3,7 @@ module Parsers
   class Nagios
     include Opstat::Logging
 
-    def save_data(data)
-      report = Hash.new
+    def parse_data(data)
       begin
         data.split("\n")[8..-1].each do |elem|
           v = elem.strip.split(':')
@@ -17,9 +16,10 @@ module Parsers
       #TODO add errors to gui - bad data
         return
       end
+      report = []
       report["Hosts Up"], report["Hosts Down"], report["Hosts Unreachable"] = report["Hosts Up/Down/Unreach"].split('/')
       report["Services Ok"], report["Services Warning"], report["Services Unknown"], report["Services Critical"] = report["Services Ok/Warn/Unk/Crit"].split('/')
-      return {
+      return [{
             :services_total => report["Total Services"],
             :hosts_total => report["Total Hosts"],
             :services_checked => report["Services Checked"],
@@ -31,7 +31,7 @@ module Parsers
             :hosts_up => report["Hosts Up"],
             :hosts_down => report["Hosts Down"],
 	    :hosts_unreachable => report ["Hosts Unreachable"]
-      }
+      }]
     end
   end
 end

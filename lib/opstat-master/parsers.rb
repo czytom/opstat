@@ -22,10 +22,12 @@ module Parsers
       host = params[:host]
       time = params[:time]
       data = params[:data]
-      report = @parsers[plugin.name].parse_data(data)
+      reports = @parsers[plugin.name].parse_data(data)
       oplogger.info "Saving parsed data from #{host.id} on #{time}"
-      report.merge!({ :timestamp => time, :host_id => host.id, :plugin_id => plugin.id, :plugin_type => plugin.name})
-      Report.create(report)
+      reports.each do |report|
+        rp = report.merge({ :timestamp => time, :host_id => host.id, :plugin_id => plugin.id, :plugin_type => plugin.name})
+        Report.create(rp)
+      end
     end
     def get_parser(plugin_name) #deprecated
       return @parsers[plugin_name] if @parsers.has_key?(plugin_name)

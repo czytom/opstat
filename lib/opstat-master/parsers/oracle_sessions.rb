@@ -4,11 +4,11 @@ module Parsers
     include Opstat::Logging
 
   #TODO - somehow check plugins version
-    def save_data(data)
-      report = nil
+    def parse_data(data)
+      reports = []
       data.split("\n")[3..-1].each do |line|
 	  tablespace = line.split(/\s+/).delete_if{|t| t.empty?}
-          report = {
+          reports << {
 	    :host_id => host_id,
             :plugin_id => plugin_id,
             :timestamp => time,
@@ -17,7 +17,7 @@ module Parsers
 	  }
       end
       oplogger.info "Saving parsed data from #{host_id} on #{time}"
-      return report
+      return reports
     end
   end
 end

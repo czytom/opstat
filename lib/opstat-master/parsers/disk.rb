@@ -9,13 +9,12 @@ module Parsers
     include Opstat::Logging
 
     def parse_data(data)
-      report = Hash.new
-      report[:disks] = []
+      reports = []
       oplogger.debug data
       data.each do |line|
         stats = line.split
         if FS_TYPES.include?(stats[1])
-          report[:disks] << {
+          reports << {
             :device => stats[0],
 	    :inode_total => stats[4].to_i,
             :inode_used => stats[5].to_i,
@@ -28,7 +27,7 @@ module Parsers
           }
         end
       end
-      return report
+      return reports
     end
   end
 end

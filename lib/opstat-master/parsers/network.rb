@@ -4,13 +4,12 @@ module Parsers
     include Opstat::Logging
 
     def parse_data(data)
-      report = {}
-      report[:interfaces] = []
+      reports = []
       interfaces_stats = data[2..-1].map{|u| u.lstrip}.join.split("\n")
       interfaces_stats.each do |interface_stat|
 	interface, values = interface_stat.split(':')
         v = values.split
-        report[:interfaces] << {
+        reports << [{
           :interface => interface,
 	  :bytes_receive => v[0],
 	  :packets_receive => v[1],
@@ -28,9 +27,9 @@ module Parsers
 	  :frame_transmit => v[13],
 	  :compressed_transmit => v[14],
 	  :multicast_transmit => v[15]
-        }
+        }]
       end
-      return report
+      return reports
     end
   end
 end

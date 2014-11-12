@@ -12,7 +12,7 @@ module Parsers
 		  packets_blocked_in_v4 = data[7].split[1].to_i
 		  packets_passed_out_v4 = data[9].split[1].to_i
 		  packets_blocked_out_v4 = data[10].split[1].to_i
-		  return {
+		  return [{
 		    :interface => interface,
 		    :bytes_in_v4 => bytes_in_v4,
 		    :bytes_out_v4 => bytes_out_v4,
@@ -20,7 +20,7 @@ module Parsers
 		    :packets_blocked_in_v4 => packets_blocked_in_v4,
 		    :packets_passed_out_v4 => packets_passed_out_v4,
 		    :packets_blocked_out_v4 => packets_blocked_out_v4
-		    }
+		    }]
     end
   end
 end

@@ -9,7 +9,7 @@ module Parsers
       interfaces_stats.each do |interface_stat|
 	interface, values = interface_stat.split(':')
         v = values.split
-        reports << [{
+        reports << {
           :interface => interface,
 	  :bytes_receive => v[0],
 	  :packets_receive => v[1],
@@ -27,7 +27,7 @@ module Parsers
 	  :frame_transmit => v[13],
 	  :compressed_transmit => v[14],
 	  :multicast_transmit => v[15]
-        }]
+        }
       end
       return reports
     end

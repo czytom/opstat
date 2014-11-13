@@ -5,7 +5,7 @@ module Parsers
     include Opstat::Logging
 
     def parse_data(data)
-      { :facts => data }
+      [{ :facts => data }]
     end
   end
 end

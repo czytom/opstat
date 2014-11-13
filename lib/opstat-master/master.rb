@@ -9,49 +9,43 @@
       oplogger.debug queue_data
 
       hostname = queue_data["hostname"]
-      queue_data["data"].each do |ip, data_named|
-        data_named.each do |d|
-	  d.each do |plugin_name, data_timed|
-	    #get client id from request and find client
-	    #TODO change - for now hardcoded for transitional period
-	    ##TODO add client creation
-	    client = Client.first(:login => 'powermedia')#.hosts.find_or_create_by_hostname_and_ip_address(hostname, ip)
-	    #find host
-	    #There should be only one
-	    client_host = client.hosts.select{|h| h.hostname == hostname and h.ip_address == ip}.first
-	    #REFACTOR
-	    if client_host.nil?
-	      puts "NEW HOST"
-	      new_host =  Host.new(:hostname => hostname, :ip_address => ip) 
-	      new_plugin = Plugin.new(:name => plugin_name)
-	      client.hosts.push(new_host) 
-	      new_host.plugins.push(new_plugin)
-	      client.save
-	      client_host = new_host
-	    end
-	    #check if plugin exists
-	    #there also should be only one plugin
-	    client_host_plugin = client_host.plugins.select{|p| p.name == plugin_name}.first
-	    ##TODO reconsider if it is really needed
-	 #   client_host.touch
-	    if client_host_plugin.nil?
-	      puts "new plugin"
-	      new_plugin = Plugin.new(:name => plugin_name)
-	      client_host.plugins.push(new_plugin)
-	      client.save
-	      client_host_plugin = client_host.plugins.select{|p| p.name == plugin_name}.first
-	    ##TODO reconsider if it is really needed
-	#	client_host_plugin.touch
-	    end
-
-	    #Plugins.find_or_create_by_plugin_and_ip_address_and_hostname( plugin_name, ip, hostname).touch
-	    data_timed.each do |time, data|
-	      Opstat::Parsers::Master.instance.parse_and_save(:time => time, :host => client_host, :data => data, :plugin => client_host_plugin)
-	      #parser = Opstat::Parsers::Master.instance.get_parser(plugin_name)
-              #parser.save_data(time, client_host.id, data, client_host_plugin.id)
-	    end
-	  end
-	end
+      ip = queue_data['ip_address']
+      #get client id from request and find client
+      #TODO change - for now hardcoded for transitional period
+      ##TODO add client creation
+      client = Client.first(:login => 'powermedia')#.hosts.find_or_create_by_hostname_and_ip_address(hostname, ip)
+      #find host
+      #There should be only one
+      queue_data["collected_data"].each do |data|
+        client_host = client.hosts.select{|h| h.hostname == hostname and h.ip_address == ip}.first
+        #REFACTOR
+        if client_host.nil?
+          puts "NEW HOST"
+          new_host =  Host.new(:hostname => hostname, :ip_address => ip) 
+          new_plugin = Plugin.new(:name => data['plugin'])
+          client.hosts.push(new_host) 
+          new_host.plugins.push(new_plugin)
+          client.save
+          client_host = new_host
+        end
+        #check if plugin exists
+        #there also should be only one plugin
+        client_host_plugin = client_host.plugins.select{|p| p.name == data['plugin']}.first
+        ##TODO reconsider if it is really needed
+   #   client_host.touch
+        if client_host_plugin.nil?
+          puts "new plugin"
+          new_plugin = Plugin.new(:name => data['plugin'])
+          client_host.plugins.push(new_plugin)
+          client.save
+          client_host_plugin = client_host.plugins.select{|p| p.name == data['plugin']}.first
+          ##TODO reconsider if it is really needed
+          #	client_host_plugin.touch
+        end
+        #Plugins.find_or_create_by_plugin_and_ip_address_and_hostname( plugin_name, ip, hostname).touch
+        Opstat::Parsers::Master.instance.parse_and_save(:host => client_host, :plugin_data => data, :plugin => client_host_plugin)
+        #parser = Opstat::Parsers::Master.instance.get_parser(plugin_name)
+        #parser.save_data(time, client_host.id, data, client_host_plugin.id)
       end
     end
   end

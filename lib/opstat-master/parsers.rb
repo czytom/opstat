@@ -20,8 +20,8 @@ module Parsers
     def parse_and_save(params)
       plugin = params[:plugin]
       host = params[:host]
-      time = params[:time]
-      data = params[:data]
+      data = params[:plugin_data]['data']
+      time = Time.parse(params[:plugin_data]['timestamp'])
       reports = @parsers[plugin.name].parse_data(data)
       oplogger.info "Saving parsed data from #{host.id} on #{time}"
       reports.each do |report|
@@ -41,6 +41,7 @@ end
 
 class Report
   include MongoMapper::Document
+  set_collection_name "opstat.reports"
 end
 
 class Client

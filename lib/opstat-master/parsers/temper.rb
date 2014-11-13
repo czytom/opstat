@@ -7,9 +7,9 @@ module Parsers
     def save_data(data)
       #TODO - mesg when empty
       temperature = data.split(',')[1].to_f
-      return {
+      return [{
 	    :temperature => temperature
-      }
+      }]
     end
   end
 end

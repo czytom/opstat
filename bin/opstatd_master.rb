@@ -19,7 +19,7 @@ optparse = OptionParser.new do|opts|
   opts.on( '-c', '--config-file String', :required,  "Config file path" ) do|l|
     options[:config_file] = l
   end
-  options[:config_file] ||= '/etc/opstat/config_opstat.yml'
+  options[:config_file] ||= '/etc/opstat/opstat.yml'
 
   opts.on( '-h', '--help', 'Display this screen' ) do
     puts opts

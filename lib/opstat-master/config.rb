@@ -20,6 +20,10 @@ module Opstat
       @config['client']['log_level'] ||= "WARN"
     end
 
+    def get_mongo_config
+       get('mongo')
+    end
+
     def get_mq_config
        get('mq')
     end

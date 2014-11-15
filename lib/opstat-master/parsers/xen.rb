@@ -3,9 +3,8 @@ module Parsers
   class Xen
     include Opstat::Logging
 
-    def save_data(data)
+    def parse_data(data)
       return if data.nil?
-      oplogger.debug data
       domains = []
       
       begin
@@ -14,7 +13,7 @@ module Parsers
         domain = {}
 	stats = line.split
 
-	domain['name'] = stats[0]
+	domain['domain'] = stats[0]
 	domain['cpu'] = stats[3].to_i
 	domain['memory'] = stats[4].to_i
 	domain['memory_max'] = stats[6].to_i
@@ -33,7 +32,7 @@ module Parsers
         return
       end
       #TODO batch import?
-      return { :domains => domains }
+      return domains
     end
   end
 end

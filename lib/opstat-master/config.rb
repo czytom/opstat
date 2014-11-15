@@ -40,3 +40,29 @@ module Opstat
 
   end
 end
+options = {}
+optparse = OptionParser.new do|opts|
+  # Set a banner, displayed at the top
+  # of the help screen.
+  opts.banner = "Usage: command [options]"
+
+  options[:verbose] = false
+    opts.on( '-v', '--verbose', 'Output more information' ) do
+    options[:verbose] = true
+  end
+
+  #TODO required options
+  opts.on( '-c', '--config-file String', :required,  "Config file path" ) do|l|
+    options[:config_file] = l
+  end
+  options[:config_file] ||= '/etc/opstat/opstat.yml'
+
+  opts.on( '-h', '--help', 'Display this screen' ) do
+    puts opts
+    exit
+  end
+end
+optparse.parse!
+
+Opstat::Config.instance.init_config(options)
+ 

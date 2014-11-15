@@ -26,4 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "daemons"
   spec.add_dependency "mongo_mapper"
   spec.add_dependency "bson_ext"
+  spec.add_dependency "xml-simple"
+  spec.add_dependency "log4r"
 end

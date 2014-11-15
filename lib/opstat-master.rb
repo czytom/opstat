@@ -6,15 +6,14 @@ rescue LoadError
 end
 require 'yaml'
 require 'log4r'
-require 'opstat-master/db/fsaver.rb'
 require 'eventmachine'
-require 'opstat-master/db/mongo.rb'
 require 'amqp'
 require 'json'
 require 'singleton'
 require 'opstat-master/config.rb'
 require 'opstat-master/common.rb'
 require 'opstat-master/logging.rb'
+require 'opstat-master/db/mongo.rb'
 require 'opstat-master/parsers.rb'
 
 require 'opstat-master/master.rb'

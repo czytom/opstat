@@ -4,10 +4,13 @@ module Parsers
     include Opstat::Logging
 
     def parse_data(data)
+      report = {}
       begin
-        data.split("\n")[8..-1].each do |elem|
+        data.compact.each do |elem|
           v = elem.strip.split(':')
+	  p v
 	  next if  v.length == 0
+	  next if v.count != 2
 	  key = v[0].strip
 	  val = v[1].strip
 	  report[key] = val
@@ -16,7 +19,6 @@ module Parsers
       #TODO add errors to gui - bad data
         return
       end
-      report = []
       report["Hosts Up"], report["Hosts Down"], report["Hosts Unreachable"] = report["Hosts Up/Down/Unreach"].split('/')
       report["Services Ok"], report["Services Warning"], report["Services Unknown"], report["Services Critical"] = report["Services Ok/Warn/Unk/Crit"].split('/')
       return [{

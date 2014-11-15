@@ -8,8 +8,7 @@ module Parsers
     def parse_data(data)
       oplogger.debug data
       return if data.length == 0
-      report = {}
-      report[:wo_apps] = []
+      reports = []
       ref  = XmlSimple.xml_in(data, {'KeyAttr'    => { 'instanceResponse' => 'type' }, 'ForceArray' => [ 'type' ],'ContentKey' => '-content'})
 
       ref["queryWotaskdResponse"]["instanceResponse"]["element"].find_all{|instance| instance["runningState"]["content"] == "ALIVE"}.each do |instance|
@@ -20,16 +19,17 @@ module Parsers
           sessions = instance['statistics']['activeSessions']['content']
           transactions = instance['statistics']['transactions']['content']
 	rescue
+	  #TODO why next?
 	  next
 	end
-        report[:wo_apps] << {
+        reports << {
 		    :instance => id.to_i,
 		    :application_name => application_name,
 		    :sessions => sessions.to_i,
 		    :transactions => transactions.to_i
 		    }
       end
-      return report
+      return reports
     end
   end
 end

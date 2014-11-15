@@ -4,7 +4,7 @@ module Parsers
   class Temper
     include Opstat::Logging
 
-    def save_data(data)
+    def parse_data(data)
       #TODO - mesg when empty
       temperature = data.split(',')[1].to_f
       return [{

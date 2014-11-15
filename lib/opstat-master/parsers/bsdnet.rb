@@ -3,7 +3,7 @@ module Parsers
   class Bsdnet
     include Opstat::Logging
 
-    def save_data(data)
+    def parse_data(data)
 		  #TODO count num of interfaces - for now assuming only 1 interface
 		  interface = data[2].split[3]
 		  bytes_in_v4 = data[3].split[2].to_i

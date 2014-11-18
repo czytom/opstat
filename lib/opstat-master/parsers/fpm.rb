@@ -4,13 +4,12 @@ module Parsers
     require 'json'
     include Opstat::Logging
 
-    def save_data(data)
+    def parse_data(data)
       begin
         return [] if data.nil?
 	reports = []
-        oplogger.debug data
-        data.each_pair do |pool, stats|
-          values = JSON::parse(stats)
+        data.each do |pool_stats|
+          values = JSON::parse(pool_stats[-1])
           reports << {
 	    :pool => values['pool'],
 	    :accepted_connections => values['accepted conn'],
@@ -24,7 +23,6 @@ module Parsers
           }
         end
       end
-      rescue
 	#TODO - set some error message in db
       return reports
     end

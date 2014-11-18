@@ -8,7 +8,6 @@ module Parsers
       begin
         data.compact.each do |elem|
           v = elem.strip.split(':')
-	  p v
 	  next if  v.length == 0
 	  next if v.count != 2
 	  key = v[0].strip

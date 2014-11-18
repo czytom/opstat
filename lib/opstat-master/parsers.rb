@@ -23,7 +23,7 @@ module Parsers
       data = params[:plugin_data]['data']
       time = Time.parse(params[:plugin_data]['timestamp'])
       reports = @parsers[plugin.name].parse_data(data)
-      oplogger.info "Saving parsed data from #{host.id} on #{time}"
+      oplogger.info "Saving parsed data from #{host.id}(plugin:#{plugin.name} #{host.hostname}) on #{time}"
       reports.each do |report|
         rp = report.merge({ :timestamp => time, :host_id => host.id, :plugin_id => plugin.id, :plugin_type => plugin.name})
         Report.create(rp)

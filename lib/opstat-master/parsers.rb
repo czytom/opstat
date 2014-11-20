@@ -23,7 +23,7 @@ module Parsers
       data = params[:plugin_data]['data']
       time = Time.parse(params[:plugin_data]['timestamp'])
       reports = @parsers[plugin.name].parse_data(data)
-      oplogger.info "Saving parsed data from #{host.id}(plugin:#{plugin.name} #{host.hostname}) on #{time}"
+      oplogger.info "Saving parsed data collected on #{time} from #{host.id}(plugin:#{plugin.name} #{host.hostname}) "
       reports.each do |report|
         rp = report.merge({ :timestamp => time, :host_id => host.id, :plugin_id => plugin.id, :plugin_type => plugin.name})
         Report.create(rp)
@@ -44,24 +44,24 @@ class Report
   set_collection_name "opstat.reports"
 end
 
-class Client
-  #TODO - definition in single place
+class User
   include MongoMapper::Document
-  many :hosts
-  set_collection_name "opstat.clients"
+  set_collection_name "opstat.users"
   timestamps!
 end
 
 class Host
-  include MongoMapper::EmbeddedDocument
+  include MongoMapper::Document
+  set_collection_name "opstat.hosts"
   many :plugins
   timestamps!
-  embedded_in :client
 end
 
 class Plugin
-  include MongoMapper::EmbeddedDocument
+  include MongoMapper::Document
+  set_collection_name "opstat.plugins"
+  key :host_id
+  belongs_to :host
   timestamps!
-  embedded_in :host
 end
 

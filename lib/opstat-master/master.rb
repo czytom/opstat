@@ -11,7 +11,7 @@
       ip = queue_data['ip_address']
       queue_data["collected_data"].each do |data|
         host = Host.find_or_create_by_hostname_and_ip_address(hostname,ip)
-        plugin = Plugin.find_or_create_by_name_and_host_id(data['plugin'],host.id)
+        plugin = Plugin.find_or_create_by_type_and_host_id(data['plugin'],host.id)
         ##TODO reconsider if it is really needed
       #client_host.touch
           ##TODO reconsider if it is really needed

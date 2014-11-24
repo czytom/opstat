@@ -22,18 +22,12 @@ module Parsers
       host = params[:host]
       data = params[:plugin_data]['data']
       time = Time.parse(params[:plugin_data]['timestamp'])
-      reports = @parsers[plugin.name].parse_data(data)
-      oplogger.info "Saving parsed data collected on #{time} from #{host.id}(plugin:#{plugin.name} #{host.hostname}) "
+      reports = @parsers[plugin.type].parse_data(data)
+      oplogger.info "Saving parsed data collected on #{time} from #{host.id}(plugin:#{plugin.type} #{host.hostname}) "
       reports.each do |report|
-        rp = report.merge({ :timestamp => time, :host_id => host.id, :plugin_id => plugin.id, :plugin_type => plugin.name})
+        rp = report.merge({ :timestamp => time, :host_id => host.id, :plugin_id => plugin.id, :plugin_type => plugin.type})
         Report.create(rp)
       end
-    end
-    def get_parser(plugin_name) #deprecated
-      return @parsers[plugin_name] if @parsers.has_key?(plugin_name)
-      plugin_class = "Opstat::Parsers::#{plugin_name.capitalize}"
-      @parsers[plugin_name] = Opstat::Common.constantize(plugin_class).new
-      @parsers[plugin_name]
     end
   end	     
 end

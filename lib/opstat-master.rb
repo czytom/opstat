@@ -6,6 +6,7 @@ rescue LoadError
 end
 require 'yaml'
 require 'log4r'
+require 'opstat-plugins'
 require 'eventmachine'
 require 'amqp'
 require 'json'

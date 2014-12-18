@@ -7,7 +7,7 @@ module Parsers
       @parsers = {}
     end
     def load_parsers
-      Opstat::Plugins.load_parsers
+      @parsers = Opstat::Plugins.load_parsers(oplogger)
     end
 
     def parse_and_save(params)

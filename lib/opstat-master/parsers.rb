@@ -7,14 +7,7 @@ module Parsers
       @parsers = {}
     end
     def load_parsers
-      pwd  = File.dirname(File.expand_path(__FILE__))
-      Dir.glob(File.expand_path("#{pwd}/parsers/*.rb")).each do |file|
-        require file
-	plugin_name = File.basename(file,'.*')
-	plugin_class = "Opstat::Parsers::#{plugin_name.capitalize}"
-	oplogger.info "loading parser #{plugin_name}"
-        @parsers[plugin_name] ||= Opstat::Common.constantize(plugin_class).new 
-      end
+      Opstat::Plugins.load_parsers
     end
 
     def parse_and_save(params)

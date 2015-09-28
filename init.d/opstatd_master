@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+depend() {
+  need net
+}
+
+#TODO - parameters - log file, config file, etc.
+start() {
+  ebegin Starting opstat master
+  opstatd_master.rb start
+  eend $?
+}
+
+stop() {
+  ebegin Stoping opstat master
+  opstatd_master.rb stop
+  eend $?
+}

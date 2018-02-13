@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Systems monitoring tool}
   spec.summary       = %q{Systems monitoring tool that works}
   spec.homepage      = "http://www.optilabs.eu/opstat"
-  spec.license       = "GPL-3"
+  spec.license       = "GPL-3.0"
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
@@ -22,11 +22,12 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_dependency "opstat-plugins", Opstat::VERSION
   spec.add_dependency "eventmachine"
+  spec.add_dependency "activemodel-serializers-xml"
   spec.add_dependency "json"
   spec.add_dependency "amqp"
   spec.add_dependency "daemons"
-  spec.add_dependency "mongo_mapper"
   spec.add_dependency "bson_ext"
   spec.add_dependency "xml-simple"
   spec.add_dependency "log4r"
+  spec.add_dependency "mongoid", "~> 6"
 end

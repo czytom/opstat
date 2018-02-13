@@ -9,9 +9,26 @@
 
       hostname = queue_data["hostname"]
       ip = queue_data['ip_address']
+      client_version = queue_data['version']
+      send_data_interval = queue_data['send_data_interval']
+
       queue_data["collected_data"].each do |data|
-        host = Host.find_or_create_by_hostname_and_ip_address(hostname,ip)
-        plugin = Plugin.find_or_create_by_type_and_host_id(data['plugin'],host.id)
+        host = Host.find_or_create_by(hostname: hostname, ip_address: ip)
+        plugin = Plugin.find_or_create_by(type: data['plugin'], host_id: host.id)
+	host['send_data_interval'] = send_data_interval
+	plugin['interval'] = data['interval']
+	plugin_dead_ratio = 2
+	unless plugin['interval'].nil?
+	  if plugin['interval'] > host['send_data_interval']
+	    plugin_is_alive_interval = data['interval'] * plugin_dead_ratio
+	  else
+	    plugin_is_alive_interval = host['send_data_interval'] * plugin_dead_ratio
+	  end
+	  plugin['is_alive_time'] = Time.now + plugin_is_alive_interval
+	end
+
+        plugin.save
+	  
         ##TODO reconsider if it is really needed
       #client_host.touch
           ##TODO reconsider if it is really needed

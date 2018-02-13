@@ -1,11 +1,6 @@
 client:
   send_data_interval: 10
 
-mongo:
-  hostname: 10.5.0.10
-  port: 27017
-  database: opstat_gui_development
-
 mq:
   queue_name: opstat
   queue_address: 10.5.0.10

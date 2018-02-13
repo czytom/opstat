@@ -6,11 +6,13 @@ module Opstat
     def initialize
       @configured = false
       @config = ''
+      @config_file = ''
       #TODO set defaults
     end
 
     def load_config(config_file)
       #set_config_defaults(configfile)
+      @config_file = config_file
       @config = YAML.load_file(config_file)
       self.set_defaults
     end
@@ -20,8 +22,8 @@ module Opstat
       @config['client']['log_level'] ||= "WARN"
     end
 
-    def get_mongo_config
-       get('mongo')
+    def get_mongo_config_file_path
+      "#{File.dirname(@config_file)}/mongoid.yml"
     end
 
     def get_mq_config

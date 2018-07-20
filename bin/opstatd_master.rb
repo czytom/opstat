@@ -1,5 +1,3 @@
-#!/usr/bin/ruby19
-#
 require 'rubygems'
 require 'daemons'
 require 'opstat-master'

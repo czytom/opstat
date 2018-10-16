@@ -16,8 +16,13 @@ module Parsers
       data = params[:plugin_data]['data']
       time = Time.parse(params[:plugin_data]['timestamp'])
       oplogger.info "Saving parsed data collected on #{time} from #{host.id}(plugin:#{plugin[:type]} #{host[:hostname]}) "
-      reports = @parsers[plugin[:type]].parse_data(data)
+      begin
+        reports = @parsers[plugin[:type]].parse_data(data)
       #TODO save errors to db
+      rescue Exception => e
+        opplogger.error "current params #{params}"
+	raise e
+      end
       return if reports.nil?
       reports.each do |report|
         rp = report.merge({ :timestamp => time, :host_id => host[:id], :plugin_id => plugin[:id], :plugin_type => plugin[:type]})

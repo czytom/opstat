@@ -10,6 +10,14 @@ module Parsers
       @parsers = Opstat::Plugins.load_parsers(oplogger)
     end
 
+    def influxdb
+      database = 'opstat'
+      username = 'opstat'
+      password = 'po123'
+      time_precision = 's'
+      @influxdb ||= InfluxDB::Client.new database, username: username, password: password, time_precision: time_precision
+    end
+
     def parse_and_save(params)
       plugin = params[:plugin]
       host = params[:host]
@@ -27,6 +35,7 @@ module Parsers
       reports.each do |report|
         rp = report.merge({ :timestamp => time, :host_id => host[:id], :plugin_id => plugin[:id], :plugin_type => plugin[:type]})
         Report.create(rp)
+	influxdb.write_point(plugin.type, rp)
       end
     end
   end	     

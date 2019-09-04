@@ -20,7 +20,7 @@ module Parsers
         reports = @parsers[plugin[:type]].parse_data(data)
       #TODO save errors to db
       rescue Exception => e
-        opplogger.error "current params #{params}"
+        oplogger.error "current params #{params}"
 	raise e
       end
       return if reports.nil?

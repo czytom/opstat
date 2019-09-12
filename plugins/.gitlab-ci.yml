@@ -1,6 +1,6 @@
 01_create_and_install_gem_plugins_locally:
   script:
-    - cd master 
+    - cd plugins
     - gem build opstat-plugins.gemspec
     - "mkdir -p /home/builds/admin/opstat-plugins"
     - "cp opstat-plugins-`ruby -e 'require \"./lib/opstat-plugins/version.rb\"; puts Opstat.version'`.gem /home/builds/admin/opstat-plugins"

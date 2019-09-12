@@ -1,6 +1,6 @@
 01_create_and_install_gem_client_locally:
   script:
-    - cd master 
+    - cd client
     - gem build opstat-client.gemspec
     - "mkdir -p /home/builds/admin/opstat-client"
     - "cp opstat-client-`ruby -e 'require \"./lib/opstat-client/version.rb\"; puts Opstat.version'`.gem /home/builds/admin/opstat-client"

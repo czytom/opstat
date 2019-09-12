@@ -14,4 +14,5 @@ rspec:
 
 01_create_gem:
   script:
+    - "mkdir /home/builds/admin/opstat-master"
     - "cp opstat-master-`ruby -e 'require \"./lib/opstat-master/version.rb\"; puts Opstat.version'`.gem /home/builds/admin/opstat-master"

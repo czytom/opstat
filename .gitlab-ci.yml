@@ -7,6 +7,3 @@ include:
   - local: '/client/.gitlab-ci.yml'
   - local: '/master/.gitlab-ci.yml'
 
-rspec:
-  script:
-  - rspec spec

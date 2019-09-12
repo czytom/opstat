@@ -5,3 +5,8 @@
     - "cp opstat-plugins-`ruby -e 'require \"./lib/opstat-plugins/version.rb\"; puts Opstat.version'`.gem /home/builds/admin/opstat"
     - "gem install /home/builds/admin/opstat/opstat-plugins-`ruby -e 'require \"./lib/opstat-plugins/version.rb\"; puts Opstat.version'`.gem"
 
+plugins_tests_with_rspec:
+  script:
+    - cd plugins
+    - rspec spec
+

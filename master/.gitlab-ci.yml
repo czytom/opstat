@@ -16,3 +16,7 @@ rspec:
   script:
     - "mkdir /home/builds/admin/opstat-master"
     - "cp opstat-master-`ruby -e 'require \"./lib/opstat-master/version.rb\"; puts Opstat.version'`.gem /home/builds/admin/opstat-master"
+
+02_install_gem_for_tests:
+  script:
+    - "gem install /home/builds/admin/opstat-master/opstat-master-`ruby -e 'require \"./lib/opstat-master/version.rb\"; puts Opstat.version'`.gem"

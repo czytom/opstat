@@ -1,4 +1,4 @@
-01_create_and_install_locally_gem:
+01_create_and_install_gem_master_locally:
   script:
     - cd master 
     - gem build opstat-master.gemspec

@@ -21,17 +21,17 @@ module Parsers
       report["Hosts Up"], report["Hosts Down"], report["Hosts Unreachable"] = report["Hosts Up/Down/Unreach"].split('/')
       report["Services Ok"], report["Services Warning"], report["Services Unknown"], report["Services Critical"] = report["Services Ok/Warn/Unk/Crit"].split('/')
       return [{
-            :services_total => report["Total Services"],
-            :hosts_total => report["Total Hosts"],
-            :services_checked => report["Services Checked"],
-            :hosts_checked => report["Hosts Checked"],
-            :services_ok => report["Services Ok"],
-            :services_warning => report["Services Warning"],
-            :services_critical => report["Services Critical"],
-            :services_unknown => report["Services Unknown"],
-            :hosts_up => report["Hosts Up"],
-            :hosts_down => report["Hosts Down"],
-	    :hosts_unreachable => report ["Hosts Unreachable"]
+            :services_total => report["Total Services"].to_i,
+            :hosts_total => report["Total Hosts"].to_i,
+            :services_checked => report["Services Checked"].to_i,
+            :hosts_checked => report["Hosts Checked"].to_i,
+            :services_ok => report["Services Ok"].to_i,
+            :services_warning => report["Services Warning"].to_i,
+            :services_critical => report["Services Critical"].to_i,
+            :services_unknown => report["Services Unknown"].to_i,
+            :hosts_up => report["Hosts Up"].to_i,
+            :hosts_down => report["Hosts Down"].to_i,
+	    :hosts_unreachable => report ["Hosts Unreachable"].to_i
       }]
     end
   end

@@ -1,0 +1,60 @@
+client:
+  send_data_interval: 60
+  log_level: INFO
+
+mq:
+  queue_name: amqpgem.test.hello_world
+  :host: 10.5.0.10
+  :user: opstat
+  :password: password
+
+plugins:
+  cpu:
+    interval: 10
+  load:
+    interval: 15
+  memory:
+    interval: 30
+  network:
+    interval: 30
+  disk:
+    interval: 600
+  facts:
+    interval: 21600
+#  apache2:
+#    log_level: DEBUG
+#    interval: 30
+#    external_plugin:
+#      log_level: DEBUG
+#      address: 127.0.0.1
+#      port: 55555
+#      log_format: '%v %h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %I %O'
+#  oracle_sessions:
+#    interval: 180
+#    su_user: oracle
+#    db_user: db_user
+#    db_password: db_password
+#  oracle_fras_sizes:
+#    interval: 7200
+#    su_user: oracle
+#    db_user: db_user
+#    db_password: db_password
+#  oracle_tablespaces_sizes:
+#    interval: 3600
+#    su_user: oracle
+#    db_user: db_user
+#    db_password: db_password
+#  webobjects:
+#    interval: 60
+#    wotask_password: secret
+#   wotask_url: http://127.0.0.1:1085/cgi-bin/WebObjects/wotaskd.woa/wa/monitorRequest
+#
+#  fpm:
+#    interval:  30
+#    log_level: DEBUG
+#    pools:
+#      www:
+#        fcgi_socket: /var/run/wypozycz.pl-fpm.socket
+#        status_url: /status
+#        request_method: GET
+

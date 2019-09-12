@@ -1,0 +1,4 @@
+configuration - amqp channel name
+security - amqp
+script - shut gracefully, send all data
+logging

@@ -1,0 +1,5 @@
+config - master 
+refactor - connect - same code in client/server
+nagios  - plugin
+load- only used plugins
+gem - install to /usr/local

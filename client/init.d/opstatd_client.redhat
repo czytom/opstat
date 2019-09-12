@@ -1,0 +1,68 @@
+#!/bin/sh
+#
+#  Created 2013-04-07 by office@optilabs.eu
+#
+# opstatd_client          This shell script takes care of starting and stopping
+#               opstatd_client.
+#
+# chkconfig: - 90 10
+# description: opstatd_client is a daemon for gathering system performance data
+# processname: opstatd_client
+# config: /etc/opstat/config_opstat.yml
+
+
+# Source function library
+if [ -f /etc/rc.d/init.d/functions ]; then
+. /etc/rc.d/init.d/functions
+elif [ -f /etc/init.d/functions ]; then
+. /etc/init.d/functions
+elif [ -f /etc/rc.d/functions ]; then
+. /etc/rc.d/functions
+fi
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Read configuration (environment etc.) for nrpe and plugins
+if [ -f /etc/sysconfig/opstatd_client ]; then
+    . /etc/sysconfig/opstatd_client
+fi
+
+# Check that networking is up.
+[ ${NETWORKING} = "no" ] && exit 0
+
+RETVAL=0
+
+# See how we were called.
+case "$1" in
+  start)
+        # Start daemons.
+        echo -n "Starting opstatd_client: "
+        opstatd_client.rb start
+        RETVAL=$?
+        echo
+        [ $RETVAL = 0 ]
+        ;;
+  stop)
+        # Stop daemons.
+        echo -n "Shutting down opstatd_client: "
+        opstatd_client.rb stop
+        RETVAL=$?
+        echo
+        [ $RETVAL = 0 ]
+        ;;
+  restart)
+        $0 stop
+        $0 start
+        ;;
+  status)
+        opstatd_client.rb status
+        RETVAL=$?
+        ;;
+  *)
+        echo "Usage: opstatd_client {start|stop|restart|status}"
+        RETVAL=2
+esac
+
+exit $RETVAL
+

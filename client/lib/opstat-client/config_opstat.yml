@@ -1,0 +1,24 @@
+client:
+  send_data_interval: 10
+
+mq:
+  queue_name: opstat
+  queue_address: 10.5.0.10
+
+plugins:
+  cpu:
+    interval: 3
+  load:
+    interval: 5
+#  nagios:
+#    interval: 1800
+#  meminfo:
+#    interval: 4
+#  diskstats:
+#    interval: 5
+#  vmstat:
+#    interval: 3
+  connectionusage:
+    interval: 3
+#  facter:
+#    interval: 21600

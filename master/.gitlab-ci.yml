@@ -1,6 +1,7 @@
 before_script:
   - ruby -v                                   # Print out ruby version for debugging
   - gem install rspec
+  - cd master 
   - gem build opstat-master.gemspec
   # Uncomment next line if your rails app needs a JS runtime:
   # - apt-get update -q && apt-get install nodejs -yqq

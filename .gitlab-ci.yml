@@ -1,6 +1,7 @@
 before_script:
   - ruby -v                                   # Print out ruby version for debugging
   - gem install --user-install rspec
+  - "mkdir -p /home/builds/admin/opstat"
 
 include:
   - local: '/plugins/.gitlab-ci.yml'

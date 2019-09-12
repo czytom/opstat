@@ -2,7 +2,6 @@
   script:
     - cd plugins
     - gem build opstat-plugins.gemspec
-    - "mkdir -p /home/builds/admin/opstat-plugins"
-    - "cp opstat-plugins-`ruby -e 'require \"./lib/opstat-plugins/version.rb\"; puts Opstat.version'`.gem /home/builds/admin/opstat-plugins"
-    - "gem install /home/builds/admin/opstat-plugins/opstat-plugins-`ruby -e 'require \"./lib/opstat-plugins/version.rb\"; puts Opstat.version'`.gem"
+    - "cp opstat-plugins-`ruby -e 'require \"./lib/opstat-plugins/version.rb\"; puts Opstat.version'`.gem /home/builds/admin/opstat"
+    - "gem install /home/builds/admin/opstat/opstat-plugins-`ruby -e 'require \"./lib/opstat-plugins/version.rb\"; puts Opstat.version'`.gem"
 

@@ -2,9 +2,8 @@
   script:
     - cd master 
     - gem build opstat-master.gemspec
-    - "mkdir -p /home/builds/admin/opstat-master"
-    - "cp opstat-master-`ruby -e 'require \"./lib/opstat-master/version.rb\"; puts Opstat.version'`.gem /home/builds/admin/opstat-master"
-    - "gem install /home/builds/admin/opstat-master/opstat-master-`ruby -e 'require \"./lib/opstat-master/version.rb\"; puts Opstat.version'`.gem"
+    - "cp opstat-master-`ruby -e 'require \"./lib/opstat-master/version.rb\"; puts Opstat.version'`.gem /home/builds/admin/opstat"
+    - "gem install /home/builds/admin/opstat/opstat-master-`ruby -e 'require \"./lib/opstat-master/version.rb\"; puts Opstat.version'`.gem"
 
 rspec:
   script:

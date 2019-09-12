@@ -2,8 +2,7 @@
   script:
     - cd client
     - gem build opstat-client.gemspec
-    - "mkdir -p /home/builds/admin/opstat-client"
-    - "cp opstat-client-`ruby -e 'require \"./lib/opstat-client/version.rb\"; puts Opstat.version'`.gem /home/builds/admin/opstat-client"
-    - "gem install /home/builds/admin/opstat-client/opstat-client-`ruby -e 'require \"./lib/opstat-client/version.rb\"; puts Opstat.version'`.gem"
+    - "cp opstat-client-`ruby -e 'require \"./lib/opstat-client/version.rb\"; puts Opstat.version'`.gem /home/builds/admin/opstat"
+    - "gem install /home/builds/admin/opstat/opstat-client-`ruby -e 'require \"./lib/opstat-client/version.rb\"; puts Opstat.version'`.gem"
 
 

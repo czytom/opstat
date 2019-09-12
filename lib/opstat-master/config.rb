@@ -26,6 +26,10 @@ module Opstat
       "#{File.dirname(@config_file)}/mongoid.yml"
     end
 
+    def get_influx_config
+       get('influxdb')
+    end
+
     def get_mq_config
        get('mq')
     end

@@ -11,11 +11,13 @@ require 'eventmachine'
 require 'amqp'
 require 'json'
 require 'singleton'
+require 'influxdb'
 
 require 'activemodel-serializers-xml'
 require 'opstat-master/config.rb'
 require 'opstat-master/common.rb'
 require 'opstat-master/db/mongo.rb'
+require 'opstat-master/db/influx.rb'
 require 'opstat-master/logging.rb'
 require 'opstat-master/parsers.rb'
 

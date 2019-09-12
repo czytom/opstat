@@ -1,11 +1,11 @@
-module OPStat
+module Opstat
 module DB
   class Influx
     include Singleton
     def initialize
       @config = Opstat::Config.instance.get_influx_config
       @influxdb = InfluxDB::Client.new @config
-#      @influxdb = InfluxDB::Client.new @config['database'], username: username, password: password, time_precision: time_precision
+      @influxdb = InfluxDB::Client.new @config['database'], username: @config['username'], password: @config['password'], time_precision: @config['time_precision']
     end
 
     def write_point(name, measurement)

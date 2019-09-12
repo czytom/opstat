@@ -27,7 +27,7 @@ module Opstat
     end
 
     def get_influx_config
-       get('influx')
+       get('influxdb')
     end
 
     def get_mq_config

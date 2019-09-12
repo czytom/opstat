@@ -34,7 +34,7 @@ module Parsers
 	report_tags ||= {}
 	measurement_tags = report_tags.merge(default_tags)
 	measurement = { :values => report_data, :timestamp => time.to_i, :tags => measurement_tags, :name => plugin.type }
-	OPStat::DB::Influx.instance.write_point(plugin.type, measurement)
+	Opstat::DB::Influx.instance.write_point(plugin.type, measurement)
       end
     end
   end	     

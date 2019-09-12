@@ -1,6 +1,5 @@
 before_script:
   - ruby -v                                   # Print out ruby version for debugging
-  - gem install --user-install --bindir ~/bin rspec
   - "mkdir -p /home/builds/admin/opstat"
 
 include:
@@ -10,4 +9,4 @@ include:
 
 rspec:
   script:
-  - ~/bin/rspec spec
+  - rspec spec

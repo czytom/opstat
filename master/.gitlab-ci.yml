@@ -5,7 +5,4 @@
     - "cp opstat-master-`ruby -e 'require \"./lib/opstat-master/version.rb\"; puts Opstat.version'`.gem /home/builds/admin/opstat"
     - "gem install /home/builds/admin/opstat/opstat-master-`ruby -e 'require \"./lib/opstat-master/version.rb\"; puts Opstat.version'`.gem"
 
-rspec:
-  script:
-  - rspec spec
 

@@ -12,9 +12,9 @@ module DB
     def write_point(name, measurement)
       begin
         retries ||= 0
-        oplogger.info "writing stats problem saving data - try ##{ retries }"
         @influxdb.write_point(name, measurement)
       rescue InfluxDB::Error
+        oplogger.info "writing stats problem saving data - try ##{ retries }. Next try in 5 seconds"
         sleep 5
         retry if (retries += 1) < 3
       end

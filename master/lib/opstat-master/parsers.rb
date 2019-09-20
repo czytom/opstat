@@ -18,14 +18,12 @@ module Parsers
       oplogger.info "Saving parsed data collected on #{time} from #{host.id}(plugin:#{plugin[:type]} #{host[:hostname]}) "
       begin
         reports = @parsers[plugin[:type]].parse_data(data: data, time: time)
-      #TODO save errors to db
+        if reports.nil? or reports.empty?
+          oplogger.warn "no report data parsed - empty report for #{plugin.type}?"
+          raise "No report data parsed - empty report for #{plugin.type}?"
+        end
       rescue Exception => e
         oplogger.error "current params #{params}"
-        ExceptionNotifier.notify_exception(e, {data: {reports: reports, params: params}})
-        return
-      end
-      if reports.nil? or reports.empty?
-        oplogger.warn "no report data parsed - empty report for #{plugin.type}?"
         ExceptionNotifier.notify_exception(e, {data: {reports: reports, params: params}})
         return
       end

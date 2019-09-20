@@ -20,6 +20,7 @@ require 'opstat-master/db/mongo.rb'
 require 'opstat-master/db/influx.rb'
 require 'opstat-master/logging.rb'
 require 'opstat-master/parsers.rb'
+require 'opstat-master/exceptions_notifications.rb'
 
 require 'opstat-master/master.rb'
 # see the bottom of the file for further inclusions

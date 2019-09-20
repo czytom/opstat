@@ -30,6 +30,10 @@ module Opstat
        get('influxdb')
     end
 
+    def get_exceptions_notifiers_config
+       get('exceptions_notifiers')
+    end
+
     def get_mq_config
        get('mq')
     end

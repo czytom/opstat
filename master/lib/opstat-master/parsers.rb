@@ -21,10 +21,12 @@ module Parsers
       #TODO save errors to db
       rescue Exception => e
         oplogger.error "current params #{params}"
-	raise e
+        ExceptionNotifier.notify_exception(e, {data: {reports: reports, params: params}})
+        return
       end
       if reports.nil? or reports.empty?
         oplogger.warn "no report data parsed - empty report for #{plugin.type}?"
+        ExceptionNotifier.notify_exception(e, {data: {reports: reports, params: params}})
         return
       end
       reports.each do |report|

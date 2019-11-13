@@ -3,7 +3,6 @@ module Parsers
   class OracleTablespacesSizes
     include Opstat::Logging
 
-  #TODO - somehow check plugins version
     def parse_data(data:, time:)
       reports = []
       data.split("\n")[3..-3].each do |line|

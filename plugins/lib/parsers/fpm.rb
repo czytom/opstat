@@ -23,7 +23,6 @@ module Parsers
           }
         end
       end
-	#TODO - set some error message in db
       return reports
     end
   end

@@ -24,5 +24,3 @@ module Common
 
 end
 end
-
-#TODO load only if run on main server

@@ -1,8 +1,6 @@
 module Opstat
 module Plugins
 extend Opstat::Logging
-#TODO make subclases of task -> task_command. task_parse <- and then inherit plugins from it?
-# task_command - u analyze output of the command, task_parse - just parse the file in /proc or other
   def self.create_plugins(queue)
     plugins = []
     Opstat::Config.instance.get('plugins').each_pair do |name, conf|
@@ -20,7 +18,7 @@ extend Opstat::Logging
 
 class Task
   include Opstat::Logging
-  attr_accessor :interval, :next_run#, :next_run#, :data, :data_sended
+  attr_accessor :interval, :next_run
 
   def initialize (name, queue, config)
     @name = name

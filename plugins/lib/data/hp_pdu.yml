@@ -1,3 +1,4 @@
+---
 SNMPv2-SMI::enterprises.232.165.2.3.2.1.2.1.1:
   :description: Voltage Segment 1 PDU A
   :pdu: A
@@ -188,4 +189,3 @@ SNMPv2-SMI::enterprises.232.165.2.3.1.1.4.2:
   :pdu: B
   :meter_type: power
   :store_key: total
-

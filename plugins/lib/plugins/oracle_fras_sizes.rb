@@ -44,5 +44,3 @@ EOF
 end
 end
 end
-#TODO check if it has privileges?
-#grant select on v_$recovery_file_dest to nagios;

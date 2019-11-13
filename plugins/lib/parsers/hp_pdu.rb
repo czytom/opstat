@@ -9,24 +9,21 @@ module Parsers
     end
 
     def parse_data(data:, time:)
-      return if data.nil? #TODO EVENT IN db
+      return [] if data.nil?
       temp = {}
       begin
-      ids = data.split("\n")
-      ids.each do |id|
-        k, v = id.split(' = ')
-	if self.snmp_ids.has_key?(k)
-	  props = snmp_ids[k]
-	  temp_key = "#{props[:meter_type]}#{props[:pdu]}"
-	  temp[temp_key] ||= {:meter_type => props[:meter_type], :pdu => props[:pdu]}
-	  temp[temp_key][props[:store_key]] = v.split(': ')[-1].to_i
-	end
-      end
-
+        ids = data.split("\n")
+        ids.each do |id|
+          k, v = id.split(' = ')
+          if self.snmp_ids.has_key?(k)
+            props = snmp_ids[k]
+            temp_key = "#{props[:meter_type]}#{props[:pdu]}"
+            temp[temp_key] ||= {:meter_type => props[:meter_type], :pdu => props[:pdu]}
+            temp[temp_key][props[:store_key]] = v.split(': ')[-1].to_i
+          end
+        end
       rescue
-	#TODO find best way to deal with that kind of problems
-	#TODO check if timestamp > prev
-        return
+        return []
       end
       reports = temp.values
       return  reports

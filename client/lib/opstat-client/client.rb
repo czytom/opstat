@@ -9,7 +9,6 @@ module Opstat
 module SendData
   extend Logging
   def self.send_from_queue(q, ex, name)
-    #TODO cache-evealuate only at start time
     begin
       @hostname ||= Socket.gethostname
       @ip_address ||= Socket::getaddrinfo(@hostname,"echo",Socket::AF_INET)[0][3]
@@ -22,7 +21,6 @@ module SendData
         end
       end
 
-      # TODO auto register - assign some unique id for a new host instead of hostname, ip_address pai
       data_to_send[:hostname] = @hostname
       data_to_send[:ip_address] = @ip_address
       data_to_send[:version] = Opstat.version
@@ -38,9 +36,8 @@ module SendData
 
   def unbind
     oplogger.info 'AMQP Connection closed'
-#    EventMachine::stop_event_loop
   end
-end #module SendData
+end
 
 
 
@@ -79,7 +76,7 @@ module Client
  
         EventMachine::add_periodic_timer(send_data_interval) { Opstat::SendData.send_from_queue(queue, exchange, ampqqueue.name) }
       end
-    end #EventMachine::run do
+    end
   end
 end
 end

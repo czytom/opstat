@@ -3,6 +3,8 @@ require "opstat-client/version"
 begin
   require 'rubygems'
 rescue LoadError
+  puts 'unable to load rubygems'
+  exit 1
 end
 require 'singleton'
 require 'opstat-client/common.rb'

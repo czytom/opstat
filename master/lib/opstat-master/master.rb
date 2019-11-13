@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-#TODO don't allow ip_addres of loopback
-
   module TaskServer
     extend Opstat::Logging
     def self.save(queue_data)
@@ -28,18 +26,11 @@
 	end
 
         plugin.save
-	  
-        ##TODO reconsider if it is really needed
-      #client_host.touch
-          ##TODO reconsider if it is really needed
-        #  client_host_plugin.touch
         Opstat::Parsers::Master.instance.parse_and_save(:host => host, :plugin_data => data, :plugin => plugin)
       end
     end
   end
 
-#TODO EM AMQP reconnect
-##TODO - AMQP config data from /etc
 module Opstat
 module Master
 extend Opstat::Logging

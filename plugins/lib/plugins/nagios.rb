@@ -11,9 +11,9 @@ class Nagios < Task
 
   def parse
     report = []
-    xmlIO = IO.popen(@nagios_stats_cmd)
-    report  = xmlIO.readlines
-    xmlIO.close
+    xml_io = IO.popen(@nagios_stats_cmd)
+    report  = xml_io.readlines
+    xml_io.close
     return report
   end
 

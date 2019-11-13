@@ -10,4 +10,3 @@ class Bsdnet < Task
 end
 end
 end
-#TODO check if stats are activated - set logininterfacep works only for one interface

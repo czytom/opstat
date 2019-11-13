@@ -1,6 +1,5 @@
 require 'yaml'
 module Opstat
-  # A pretty sucky config class, ripe for refactoring/improving
   class Config
   include Opstat::Logging
     include Singleton
@@ -8,7 +7,6 @@ module Opstat
     def initialize
       @configured = false
       @config = ''
-      #TODO set defaults
     end
 
     def load_config(config_file)
@@ -56,7 +54,6 @@ optparse = OptionParser.new do|opts|
     options[:verbose] = true
   end
 
-  #TODO required options
   opts.on( '-c', '--config-file String', :required,  "Config file path" ) do|l|
     options[:config_file] = l
   end

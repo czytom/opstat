@@ -39,7 +39,6 @@ module UDPExternalPlugins
       oplogger.debug "someone connected!"
     end
 
-    #TODO - something with parse everty line - skips some correct lines
     def receive_data data
       oplogger.debug data
       line = data.split(': ')[1]
@@ -71,6 +70,3 @@ end
 
   end
 end
-#TO CHECK - port not used
-# apache log format configured, apache logger configured
-# TODO apachelogregex - installed?

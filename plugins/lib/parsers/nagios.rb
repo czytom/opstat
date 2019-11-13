@@ -15,7 +15,6 @@ module Parsers
 	  report[key] = val
         end
       rescue
-      #TODO add errors to gui - bad data
         return
       end
       report["Hosts Up"], report["Hosts Down"], report["Hosts Unreachable"] = report["Hosts Up/Down/Unreach"].split('/')

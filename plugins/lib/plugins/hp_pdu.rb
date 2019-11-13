@@ -12,17 +12,12 @@ class HpPdu < Task
   end
 
   def parse
-    snmpIO = IO.popen(@snmp_cmd)
-    report  = snmpIO.readlines.join
-    snmpIO.close
+    snmp_io = IO.popen(@snmp_cmd)
+    report  = snmp_io.readlines.join
+    snmp_io.close
     return report
   end
 
 end
 end
 end
-
-
-#for test
-# check snmp is installed
-# check port is open - snmp is accessible

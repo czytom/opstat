@@ -3,7 +3,6 @@ module Parsers
   class OracleSessions
     include Opstat::Logging
 
-  #TODO - somehow check plugins version
     def parse_data(data:, time:)
       reports = []
       data.split("\n")[3..-1].each do |line|

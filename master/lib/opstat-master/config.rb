@@ -1,5 +1,4 @@
 module Opstat
-  # A pretty sucky config class, ripe for refactoring/improving
   class Config
     include Singleton
 
@@ -7,7 +6,6 @@ module Opstat
       @configured = false
       @config = ''
       @config_file = ''
-      #TODO set defaults
     end
 
     def load_config(config_file)

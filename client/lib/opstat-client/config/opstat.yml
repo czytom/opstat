@@ -1,3 +1,4 @@
+---
 client:
   send_data_interval: 60
   log_level: INFO
@@ -28,7 +29,8 @@ plugins:
 #      log_level: DEBUG
 #      address: 127.0.0.1
 #      port: 55555
-#      log_format: '%v %h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %I %O'
+#      log_format:
+#        '%v %h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %I %O'
 #  oracle_sessions:
 #    interval: 180
 #    su_user: oracle
@@ -47,7 +49,8 @@ plugins:
 #  webobjects:
 #    interval: 60
 #    wotask_password: secret
-#   wotask_url: http://127.0.0.1:1085/cgi-bin/WebObjects/wotaskd.woa/wa/monitorRequest
+#    wotask_url:
+#      http://127.0.0.1:1085/cgi-bin/WebObjects/wotaskd.woa/wa/monitorRequest
 #
 #  fpm:
 #    interval:  30
@@ -57,4 +60,3 @@ plugins:
 #        fcgi_socket: /var/run/wypozycz.pl-fpm.socket
 #        status_url: /status
 #        request_method: GET
-

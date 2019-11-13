@@ -1,8 +1,9 @@
 require "opstat-master/version"
-# Try to load rubygems.  Hey rubygems, I hate you.
 begin
   require 'rubygems'
 rescue LoadError
+  puts 'unable to load rubygems'
+  exit 1
 end
 require 'yaml'
 require 'log4r'

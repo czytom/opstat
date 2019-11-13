@@ -27,7 +27,3 @@ class Fpm < Task
 end
 end
 end
-#TO CHECK -cgi-fcgi installed
-#- pm.status_path  property set in pool configuration
-
-

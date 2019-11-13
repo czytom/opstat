@@ -23,17 +23,17 @@ module Parsers
       return reports
     end
     def get_space_usage_report(stats)
-          space_usage_report = {
-            'device' => stats[0].delete_prefix('/dev/'),
-            :inode_total => stats[4].to_i,
-            :inode_used => stats[5].to_i,
-            :inode_free => stats[6].to_i,
-            :block_total => stats[2].to_i + stats[3].to_i,
-            :block_used => stats[2].to_i,
-            :block_free => stats[3].to_i,
-            :fstype => stats[1],
-            :OPSTAT_TAG_mount => stats[7]
-          }
+      {
+        'device' => stats[0].delete_prefix('/dev/'),
+        :inode_total => stats[4].to_i,
+        :inode_used => stats[5].to_i,
+        :inode_free => stats[6].to_i,
+        :block_total => stats[2].to_i + stats[3].to_i,
+        :block_used => stats[2].to_i,
+        :block_free => stats[3].to_i,
+        :fstype => stats[1],
+        :OPSTAT_TAG_mount => stats[7]
+      }
     end
 
     def get_disk_io_stats_for_device(device, data)

@@ -8,7 +8,6 @@ class Disk < Task
     self
   end
 
-  #TODO in memory module io.close
   def parse
     @count_number += 1
     report = {}

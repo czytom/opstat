@@ -4,16 +4,14 @@ module Parsers
     include Opstat::Logging
 
     def parse_data(data:, time:)
-      return if data.nil? #TODO EVENT IN db
+      return [] if data.nil?
       
       begin
       data.split("\n").each do |line|
         oplogger.debug "parsing line #{line}"
       end
       rescue
-	#TODO find best way to deal with that kind of problems
-	#TODO check if timestamp > prev
-        return
+        return []
       end
       return report
     end

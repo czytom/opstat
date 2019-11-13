@@ -1,3 +1,4 @@
+require 'singleton'
 module Opstat
   class Config
     include Singleton

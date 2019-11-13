@@ -100,3 +100,6 @@ end
 
 #local part
 require './lib/opstat-plugins.rb'
+require 'simplecov'
+
+SimpleCov.start

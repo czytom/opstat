@@ -7,7 +7,6 @@
 
       hostname = queue_data["hostname"]
       ip = queue_data['ip_address']
-      client_version = queue_data['version']
       send_data_interval = queue_data['send_data_interval']
 
       queue_data["collected_data"].each do |data|

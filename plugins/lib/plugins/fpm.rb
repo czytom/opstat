@@ -15,11 +15,11 @@ class Fpm < Task
       oplogger.debug "getting #{pool} statistics"
       env = {"REQUEST_METHOD" => options['request_method'], "SCRIPT_NAME" => options['status_url'], "SCRIPT_FILENAME" => options['status_url'], "QUERY_STRING" => 'json'}
       oplogger.debug "cgi-fcgi environment: #{env.inspect}"
-      fpmIO = IO.popen([env, 'cgi-fcgi','-bind','-connect',options['fcgi_socket'] ])
-      pool_report  = fpmIO.readlines
+      fpm_io = IO.popen([env, 'cgi-fcgi','-bind','-connect',options['fcgi_socket'] ])
+      pool_report  = fpm_io.readlines
       oplogger.debug "#{pool} statistics: #{pool_report}"
       report << pool_report
-      fpmIO.close
+      fpm_io.close
     end
     return report
   end

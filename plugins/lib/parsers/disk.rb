@@ -1,7 +1,5 @@
 require 'yaml'
 
-# TODO connect client settings with master (version, etc)
-# df --output='source,fstype,used,avail,itotal,iused,iavail,target'
 module Opstat
 module Parsers
   FS_TYPES = ["ext2", "ext3", "ext4", "reiserfs", "xfs", "jfs"]

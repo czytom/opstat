@@ -26,8 +26,8 @@ class Task
     @interval = config['interval']
     @interval ||= 60
     @data_sended = {}
-    @count_number = 0 #TODO how big it should be
-    @send_number = 0 #TODO how big it should be
+    @count_number = 0
+    @send_number = 0
     @log_level = config['log_level']
     @run = config['run']
     @external_plugin = config['external_plugin']

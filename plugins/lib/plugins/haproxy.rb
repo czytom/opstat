@@ -11,7 +11,7 @@ class Haproxy < Task
     def parse
       report = []
       begin
-        source = open(@haproxy_url,open_timeout: 1, read_timeout: 1).each do |line|
+        open(@haproxy_url,open_timeout: 1, read_timeout: 1).each do |line|
           report << line
         end
       rescue

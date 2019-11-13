@@ -50,8 +50,6 @@ module Opstat
 end
 options = {}
 optparse = OptionParser.new do|opts|
-  # Set a banner, displayed at the top
-  # of the help screen.
   opts.banner = "Usage: command [options]"
 
   options[:verbose] = false
@@ -59,7 +57,6 @@ optparse = OptionParser.new do|opts|
     options[:verbose] = true
   end
 
-  #TODO required options
   opts.on( '-c', '--config-file String', :required,  "Config file path" ) do|l|
     options[:config_file] = l
   end

@@ -34,7 +34,7 @@ module Parsers
           cpu_summary_report[:context_switches] = $~[:context_switches].to_i
         end
       end
-      reports << cpu_summary_report
+      reports << cpu_summary_report unless cpu_summary_report.empty?
       return reports
     end
   end

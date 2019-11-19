@@ -12,6 +12,9 @@ module Parsers
       webobjects_json_stats = JSON::parse(prepared_data)
       webobjects_json_stats.select{|s| s['state'] == 'ALIVE'}.each do |instance_stats|
         webobjects_stats = {
+          'OPSTAT_TAG_wo_app': instance_stats['name'],
+          'OPSTAT_TAG_wo_host': instance_stats['host'],
+          'OPSTAT_TAG_wo_instance_id': instance_stats['instance_id'],
           'active_sessions': instance_stats['activeSessions'].to_i,
           'transactions': instance_stats['transactions'].to_i,
           'average_idle_period': instance_stats['averageIdlePeriod'].to_f,
@@ -19,9 +22,6 @@ module Parsers
           'deaths': instance_stats['deaths'].to_i,
           'refusing_new_sessions': instance_stats['refusingNewSessions'],
           'auto_recover': instance_stats['autoRecover'].downcase == 'true',
-          'OPSTAT_TAG_wo_instance_id': instance_stats['instance_id'],
-          'OPSTAT_TAG_wo_host': instance_stats['host'],
-          'OPSTAT_TAG_wo_app': instance_stats['name']
         }
         reports << webobjects_stats
       end

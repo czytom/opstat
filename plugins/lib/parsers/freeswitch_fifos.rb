@@ -33,7 +33,8 @@ module Parsers
         if fifo[:bridges].nil?
           report[:active_calls] = 0
         else
-          if fifo[:bridges].is_a?(Hash)
+          require 'pp'
+          if fifo[:bridges][:bridge].is_a?(Hash)
             report[:active_calls] = 1
           else
             report[:active_calls] = fifo[:bridges][:bridge].count

@@ -10,7 +10,9 @@ module Parsers
       oplogger.debug data
       json_data = JSON::parse(data)
       json_data.each_pair do |vhost, stats|
-        reports << { :vhost_name => vhost, :stats => stats }
+        reports << { :values => {:vhost_name => vhost, :stats => stats},
+                     :time => time
+                   }
       end
       return reports
     end

@@ -5,8 +5,9 @@ module Parsers
     include Opstat::Logging
 
     def parse_data(data:, time:)
+      #TODO - mesg when empty
       temperature = data.split(',')[1].to_f
-      temperature = JSON::parse(data)["temperature_celsius"]
+    temperature = JSON::parse(data)["temperature_celsius"]
       return [{
 	    :temperature => temperature
       }]

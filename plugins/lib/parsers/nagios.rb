@@ -15,11 +15,12 @@ module Parsers
 	  report[key] = val
         end
       rescue
+      #TODO add errors to gui - bad data
         return
       end
       report["Hosts Up"], report["Hosts Down"], report["Hosts Unreachable"] = report["Hosts Up/Down/Unreach"].split('/')
       report["Services Ok"], report["Services Warning"], report["Services Unknown"], report["Services Critical"] = report["Services Ok/Warn/Unk/Crit"].split('/')
-      return [{
+      return [{:time => time, :values => {
             :services_total => report["Total Services"].to_i,
             :hosts_total => report["Total Hosts"].to_i,
             :services_checked => report["Services Checked"].to_i,
@@ -31,7 +32,7 @@ module Parsers
             :hosts_up => report["Hosts Up"].to_i,
             :hosts_down => report["Hosts Down"].to_i,
 	    :hosts_unreachable => report ["Hosts Unreachable"].to_i
-      }]
+      }}]
     end
   end
 end

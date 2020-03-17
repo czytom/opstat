@@ -14,7 +14,7 @@ module Parsers
           captured_data = haproxy_table.named_captures
 	  captured_data['table_size'] = captured_data['table_size'].to_i
 	  captured_data['table_used'] = captured_data['table_used'].to_i
-          report << captured_data
+          report << {:values => captured_data, :time => time, :tags => {'OPSTAT_TAG_table' => haproxy_table}}
         end
       end
       return report

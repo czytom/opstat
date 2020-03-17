@@ -9,7 +9,7 @@ module Parsers
       memory = YAML::load(data.join)
       oplogger.debug memory
       begin
-        return [{
+        return [{:time => time, :values => {
           :total => memory["MemTotal"].split[0].to_i,
           :free => memory["MemFree"].split[0].to_i,
           :used => memory["MemTotal"].split[0].to_i - memory["MemFree"].split[0].to_i - (memory["Buffers"].to_i + memory["Cached"].split[0].to_i + memory["SReclaimable"].split[0].to_i - memory["Shmem"].split[0].to_i),
@@ -18,7 +18,7 @@ module Parsers
           :swap_total => memory["SwapTotal"].split[0].to_i,
           :swap_free => memory["SwapFree"].split[0].to_i,
           :swap_used => memory["SwapTotal"].split[0].to_i - memory["SwapFree"].split[0].to_i
-        }]
+        }}]
       rescue Exception => e
         return []
       end

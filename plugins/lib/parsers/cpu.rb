@@ -9,7 +9,7 @@ module Parsers
       data.each do |line|
         case line
         when /(?<OPSTAT_TAG_cpu_id>cpu\S*)\s+(?<user>\d+)\s+(?<nice>\d+)\s+(?<system>\d+)\s+(?<idle>\d+)\s+(?<iowait>\d+)\s+(?<irq>\d+)\s+(?<softirq>\d+).*/
-          report = {
+          report = {:values => {
 	      :OPSTAT_TAG_cpu_id => $~[:OPSTAT_TAG_cpu_id],
               :user => $~[:user].to_i,
               :nice => $~[:nice].to_i,
@@ -18,7 +18,9 @@ module Parsers
               :iowait => $~[:iowait].to_i,
               :irq => $~[:irq].to_i,
               :softirq => $~[:softirq].to_i
-	    }
+	    },
+            :time => time
+            }
           if $~[:OPSTAT_TAG_cpu_id] == 'cpu'
             cpu_summary_report = report
           else
@@ -34,7 +36,7 @@ module Parsers
           cpu_summary_report[:context_switches] = $~[:context_switches].to_i
         end
       end
-      reports << cpu_summary_report unless cpu_summary_report.empty?
+      reports << cpu_summary_report
       return reports
     end
   end

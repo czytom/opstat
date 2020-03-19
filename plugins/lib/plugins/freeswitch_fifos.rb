@@ -13,7 +13,7 @@ class FreeswitchFifos < Task
   def parse
     @count_number += 1
     report = `#{@fifo_report_cmd}`
-    return report
+   return report
   end
 
   def default_config

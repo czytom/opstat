@@ -11,11 +11,12 @@ module Parsers
       parsed_data = CSV.parse(data.join, { headers: true, header_converters: :symbol, converters: :all})
       parsed_data.each do |row|
         row_data = row.to_hash
-        report = {:time => time, :tags => {'OPSTAT_TAG_svname' => row_data.delete(:svname), 'OPSTAT_TAG_pxname' => row_data.delete(:pxname)}}
+        report_values = row.to_hash
+        report = {:time => time, :tags => {'OPSTAT_TAG_svname' => report_values.delete(:svname), 'OPSTAT_TAG_pxname' => report_values.delete(:pxname)}}
         row_data.each_pair do |key,value|
-          row_data.delete(key) if value.nil?
+          report_values.delete(key) if value.nil?
         end
-        report[:values] = row_data
+        report[:values] = report_values
         reports << report
       end
       return reports

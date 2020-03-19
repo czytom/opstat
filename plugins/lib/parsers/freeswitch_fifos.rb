@@ -18,7 +18,7 @@ module Parsers
       XmlHasher.parse(data)[:fifo_report][:fifo].each do |fifo|
         next if SKIP_FIFO_NAMES.include?(fifo[:name])
         report = {:values => {}, :time => time, :tags => {:OPSTAT_TAG_fifo_name => fifo[:name]}}
-        report[:waiting_calls] = fifo[:waiting_count].to_i
+        report[:values][:waiting_calls] = fifo[:waiting_count].to_i
         report[:values][:outbound_per_cycle] = fifo[:outbound_per_cycle].to_i
         if fifo[:outbound].nil?
           report[:values][:operators] = 0

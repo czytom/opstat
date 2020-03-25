@@ -18,10 +18,7 @@ module Parsers
       oplogger.info "Saving parsed data collected on #{collect_time} from #{host.id}(plugin:#{plugin[:type]} #{host[:hostname]}) "
       begin
         reports = @parsers[plugin[:type]].parse_data(data: data, time: collect_time)
-        if reports.nil? or reports.empty?
-          oplogger.warn "no report data parsed - empty report for #{plugin.type}?"
-          raise "No report data parsed - empty report for #{plugin.type}?"
-        end
+        return if reports.nil? or reports.empty?
       rescue Exception => e
         oplogger.error "current params #{params}"
         puts '#######################'

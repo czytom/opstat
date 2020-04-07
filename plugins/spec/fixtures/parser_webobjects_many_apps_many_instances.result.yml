@@ -1,311 +1,404 @@
 ---
-- :OPSTAT_TAG_wo_app: ifirma
-  :OPSTAT_TAG_wo_host: ifirmaapp01
-  :OPSTAT_TAG_wo_instance_id: '201'
-  :active_sessions: 104
-  :transactions: 331111
-  :average_idle_period: 0.602
-  :average_transaction_time: 0.05
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma
-  :OPSTAT_TAG_wo_host: ifirmaapp01
-  :OPSTAT_TAG_wo_instance_id: '202'
-  :active_sessions: 162
-  :transactions: 356468
-  :average_idle_period: 0.6
-  :average_transaction_time: 0.046
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma
-  :OPSTAT_TAG_wo_host: ifirmaapp02
-  :OPSTAT_TAG_wo_instance_id: '211'
-  :active_sessions: 167
-  :transactions: 403779
-  :average_idle_period: 0.541
-  :average_transaction_time: 0.039
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma
-  :OPSTAT_TAG_wo_host: ifirmaapp02
-  :OPSTAT_TAG_wo_instance_id: '212'
-  :active_sessions: 153
-  :transactions: 341086
-  :average_idle_period: 0.569
-  :average_transaction_time: 0.044
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma
-  :OPSTAT_TAG_wo_host: ifirmaapp03
-  :OPSTAT_TAG_wo_instance_id: '221'
-  :active_sessions: 172
-  :transactions: 311936
-  :average_idle_period: 0.617
-  :average_transaction_time: 0.049
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma
-  :OPSTAT_TAG_wo_host: ifirmaapp03
-  :OPSTAT_TAG_wo_instance_id: '222'
-  :active_sessions: 150
-  :transactions: 556180
-  :average_idle_period: 0.66
-  :average_transaction_time: 0.037
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma
-  :OPSTAT_TAG_wo_host: ifirmaapp04
-  :OPSTAT_TAG_wo_instance_id: '231'
-  :active_sessions: 153
-  :transactions: 855089
-  :average_idle_period: 0.756
-  :average_transaction_time: 0.044
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma
-  :OPSTAT_TAG_wo_host: ifirmaapp04
-  :OPSTAT_TAG_wo_instance_id: '232'
-  :active_sessions: 163
-  :transactions: 1010924
-  :average_idle_period: 0.71
-  :average_transaction_time: 0.038
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma
-  :OPSTAT_TAG_wo_host: ifirmaapp05
-  :OPSTAT_TAG_wo_instance_id: '241'
-  :active_sessions: 147
-  :transactions: 983630
-  :average_idle_period: 0.664
-  :average_transaction_time: 0.036
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma
-  :OPSTAT_TAG_wo_host: ifirmaapp05
-  :OPSTAT_TAG_wo_instance_id: '242'
-  :active_sessions: 162
-  :transactions: 28314
-  :average_idle_period: 0.596
-  :average_transaction_time: 0.072
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma
-  :OPSTAT_TAG_wo_host: ifirmaapp06
-  :OPSTAT_TAG_wo_instance_id: '251'
-  :active_sessions: 165
-  :transactions: 351796
-  :average_idle_period: 0.558
-  :average_transaction_time: 0.04
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma
-  :OPSTAT_TAG_wo_host: ifirmaapp06
-  :OPSTAT_TAG_wo_instance_id: '252'
-  :active_sessions: 121
-  :transactions: 287528
-  :average_idle_period: 0.613
-  :average_transaction_time: 0.048
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma
-  :OPSTAT_TAG_wo_host: ifirmaapp07
-  :OPSTAT_TAG_wo_instance_id: '261'
-  :active_sessions: 190
-  :transactions: 518810
-  :average_idle_period: 0.901
-  :average_transaction_time: 0.049
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma
-  :OPSTAT_TAG_wo_host: ifirmaapp07
-  :OPSTAT_TAG_wo_instance_id: '262'
-  :active_sessions: 127
-  :transactions: 597894
-  :average_idle_period: 0.791
-  :average_transaction_time: 0.04
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma
-  :OPSTAT_TAG_wo_host: ifirmaapp08
-  :OPSTAT_TAG_wo_instance_id: '271'
-  :active_sessions: 117
-  :transactions: 349186
-  :average_idle_period: 0.601
-  :average_transaction_time: 0.04
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma
-  :OPSTAT_TAG_wo_host: ifirmaapp08
-  :OPSTAT_TAG_wo_instance_id: '272'
-  :active_sessions: 182
-  :transactions: 358909
-  :average_idle_period: 0.563
-  :average_transaction_time: 0.041
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: iadmin
-  :OPSTAT_TAG_wo_host: ifirmawoapps01
-  :OPSTAT_TAG_wo_instance_id: '111'
-  :active_sessions: 92
-  :transactions: 214552
-  :average_idle_period: 5.216
-  :average_transaction_time: 0.048
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma-demo
-  :OPSTAT_TAG_wo_host: ifirmawoapps01
-  :OPSTAT_TAG_wo_instance_id: '121'
-  :active_sessions: 1
-  :transactions: 153463
-  :average_idle_period: 7.282
-  :average_transaction_time: 0.003
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ifirma-demo
-  :OPSTAT_TAG_wo_host: ifirmawoapps01
-  :OPSTAT_TAG_wo_instance_id: '122'
-  :active_sessions: 3
-  :transactions: 154273
-  :average_idle_period: 7.245
-  :average_transaction_time: 0.003
-  :deaths: 1
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ceidg
-  :OPSTAT_TAG_wo_host: ifirmawoapps01
-  :OPSTAT_TAG_wo_instance_id: '201'
-  :active_sessions: 21
-  :transactions: 162540
-  :average_idle_period: 6.854
-  :average_transaction_time: 0.001
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ceidg
-  :OPSTAT_TAG_wo_host: ifirmawoapps01
-  :OPSTAT_TAG_wo_instance_id: '202'
-  :active_sessions: 17
-  :transactions: 162598
-  :average_idle_period: 6.851
-  :average_transaction_time: 0.001
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: ceidg
-  :OPSTAT_TAG_wo_host: ifirmawoapps01
-  :OPSTAT_TAG_wo_instance_id: '203'
-  :active_sessions: 22
-  :transactions: 162423
-  :average_idle_period: 6.858
-  :average_transaction_time: 0.001
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: PitRoczny2011
-  :OPSTAT_TAG_wo_host: ifirmawoapps02
-  :OPSTAT_TAG_wo_instance_id: '103'
-  :active_sessions: 964
-  :transactions: 3788
-  :average_idle_period: 7.432
-  :average_transaction_time: 0.038
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: PitRoczny2012
-  :OPSTAT_TAG_wo_host: ifirmawoapps02
-  :OPSTAT_TAG_wo_instance_id: '104'
-  :active_sessions: 965
-  :transactions: 3789
-  :average_idle_period: 7.42
-  :average_transaction_time: 0.048
-  :deaths: 3
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: PitRoczny2013
-  :OPSTAT_TAG_wo_host: ifirmawoapps02
-  :OPSTAT_TAG_wo_instance_id: '202'
-  :active_sessions: 3319
-  :transactions: 3796
-  :average_idle_period: 7.466
-  :average_transaction_time: 0.039
-  :deaths: 20
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: PitRoczny2014
-  :OPSTAT_TAG_wo_host: ifirmawoapps02
-  :OPSTAT_TAG_wo_instance_id: '105'
-  :active_sessions: 3315
-  :transactions: 3792
-  :average_idle_period: 7.454
-  :average_transaction_time: 0.047
-  :deaths: 20
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: AllegroLimit
-  :OPSTAT_TAG_wo_host: ifirmawoapps01
-  :OPSTAT_TAG_wo_instance_id: '301'
-  :active_sessions: 481
-  :transactions: 147434
-  :average_idle_period: 7.454
-  :average_transaction_time: 0.103
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: PitRoczny2015
-  :OPSTAT_TAG_wo_host: ifirmawoapps02
-  :OPSTAT_TAG_wo_instance_id: '106'
-  :active_sessions: 81
-  :transactions: 242689
-  :average_idle_period: 7.469
-  :average_transaction_time: 0.045
-  :deaths: 0
-  :refusing_new_sessions: false
-  :auto_recover: false
-- :OPSTAT_TAG_wo_app: PitRoczny2016
-  :OPSTAT_TAG_wo_host: ifirmawoapps02
-  :OPSTAT_TAG_wo_instance_id: '107'
-  :active_sessions: 1
-  :transactions: 248205
-  :average_idle_period: 7.391
-  :average_transaction_time: 0.021
-  :deaths: 1
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: PitRoczny2017
-  :OPSTAT_TAG_wo_host: ifirmawoapps02
-  :OPSTAT_TAG_wo_instance_id: '201'
-  :active_sessions: 14
-  :transactions: 277516
-  :average_idle_period: 6.616
-  :average_transaction_time: 0.032
-  :deaths: 2
-  :refusing_new_sessions: false
-  :auto_recover: true
-- :OPSTAT_TAG_wo_app: PitRoczny2017
-  :OPSTAT_TAG_wo_host: ifirmawoapps02
-  :OPSTAT_TAG_wo_instance_id: '202'
-  :active_sessions: 11
-  :transactions: 278016
-  :average_idle_period: 6.604
-  :average_transaction_time: 0.033
-  :deaths: 2
-  :refusing_new_sessions: false
-  :auto_recover: true
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma
+    :OPSTAT_TAG_wo_host: ifirmaapp01
+    :OPSTAT_TAG_wo_instance_id: '201'
+  :values:
+    :active_sessions: 104
+    :transactions: 331111
+    :average_idle_period: 0.602
+    :average_transaction_time: 0.05
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma
+    :OPSTAT_TAG_wo_host: ifirmaapp01
+    :OPSTAT_TAG_wo_instance_id: '202'
+  :values:
+    :active_sessions: 162
+    :transactions: 356468
+    :average_idle_period: 0.6
+    :average_transaction_time: 0.046
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma
+    :OPSTAT_TAG_wo_host: ifirmaapp02
+    :OPSTAT_TAG_wo_instance_id: '211'
+  :values:
+    :active_sessions: 167
+    :transactions: 403779
+    :average_idle_period: 0.541
+    :average_transaction_time: 0.039
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma
+    :OPSTAT_TAG_wo_host: ifirmaapp02
+    :OPSTAT_TAG_wo_instance_id: '212'
+  :values:
+    :active_sessions: 153
+    :transactions: 341086
+    :average_idle_period: 0.569
+    :average_transaction_time: 0.044
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma
+    :OPSTAT_TAG_wo_host: ifirmaapp03
+    :OPSTAT_TAG_wo_instance_id: '221'
+  :values:
+    :active_sessions: 172
+    :transactions: 311936
+    :average_idle_period: 0.617
+    :average_transaction_time: 0.049
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma
+    :OPSTAT_TAG_wo_host: ifirmaapp03
+    :OPSTAT_TAG_wo_instance_id: '222'
+  :values:
+    :active_sessions: 150
+    :transactions: 556180
+    :average_idle_period: 0.66
+    :average_transaction_time: 0.037
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma
+    :OPSTAT_TAG_wo_host: ifirmaapp04
+    :OPSTAT_TAG_wo_instance_id: '231'
+  :values:
+    :active_sessions: 153
+    :transactions: 855089
+    :average_idle_period: 0.756
+    :average_transaction_time: 0.044
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma
+    :OPSTAT_TAG_wo_host: ifirmaapp04
+    :OPSTAT_TAG_wo_instance_id: '232'
+  :values:
+    :active_sessions: 163
+    :transactions: 1010924
+    :average_idle_period: 0.71
+    :average_transaction_time: 0.038
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma
+    :OPSTAT_TAG_wo_host: ifirmaapp05
+    :OPSTAT_TAG_wo_instance_id: '241'
+  :values:
+    :active_sessions: 147
+    :transactions: 983630
+    :average_idle_period: 0.664
+    :average_transaction_time: 0.036
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma
+    :OPSTAT_TAG_wo_host: ifirmaapp05
+    :OPSTAT_TAG_wo_instance_id: '242'
+  :values:
+    :active_sessions: 162
+    :transactions: 28314
+    :average_idle_period: 0.596
+    :average_transaction_time: 0.072
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma
+    :OPSTAT_TAG_wo_host: ifirmaapp06
+    :OPSTAT_TAG_wo_instance_id: '251'
+  :values:
+    :active_sessions: 165
+    :transactions: 351796
+    :average_idle_period: 0.558
+    :average_transaction_time: 0.04
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma
+    :OPSTAT_TAG_wo_host: ifirmaapp06
+    :OPSTAT_TAG_wo_instance_id: '252'
+  :values:
+    :active_sessions: 121
+    :transactions: 287528
+    :average_idle_period: 0.613
+    :average_transaction_time: 0.048
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma
+    :OPSTAT_TAG_wo_host: ifirmaapp07
+    :OPSTAT_TAG_wo_instance_id: '261'
+  :values:
+    :active_sessions: 190
+    :transactions: 518810
+    :average_idle_period: 0.901
+    :average_transaction_time: 0.049
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma
+    :OPSTAT_TAG_wo_host: ifirmaapp07
+    :OPSTAT_TAG_wo_instance_id: '262'
+  :values:
+    :active_sessions: 127
+    :transactions: 597894
+    :average_idle_period: 0.791
+    :average_transaction_time: 0.04
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma
+    :OPSTAT_TAG_wo_host: ifirmaapp08
+    :OPSTAT_TAG_wo_instance_id: '271'
+  :values:
+    :active_sessions: 117
+    :transactions: 349186
+    :average_idle_period: 0.601
+    :average_transaction_time: 0.04
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma
+    :OPSTAT_TAG_wo_host: ifirmaapp08
+    :OPSTAT_TAG_wo_instance_id: '272'
+  :values:
+    :active_sessions: 182
+    :transactions: 358909
+    :average_idle_period: 0.563
+    :average_transaction_time: 0.041
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: iadmin
+    :OPSTAT_TAG_wo_host: ifirmawoapps01
+    :OPSTAT_TAG_wo_instance_id: '111'
+  :values:
+    :active_sessions: 92
+    :transactions: 214552
+    :average_idle_period: 5.216
+    :average_transaction_time: 0.048
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma-demo
+    :OPSTAT_TAG_wo_host: ifirmawoapps01
+    :OPSTAT_TAG_wo_instance_id: '121'
+  :values:
+    :active_sessions: 1
+    :transactions: 153463
+    :average_idle_period: 7.282
+    :average_transaction_time: 0.003
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ifirma-demo
+    :OPSTAT_TAG_wo_host: ifirmawoapps01
+    :OPSTAT_TAG_wo_instance_id: '122'
+  :values:
+    :active_sessions: 3
+    :transactions: 154273
+    :average_idle_period: 7.245
+    :average_transaction_time: 0.003
+    :deaths: 1
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ceidg
+    :OPSTAT_TAG_wo_host: ifirmawoapps01
+    :OPSTAT_TAG_wo_instance_id: '201'
+  :values:
+    :active_sessions: 21
+    :transactions: 162540
+    :average_idle_period: 6.854
+    :average_transaction_time: 0.001
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ceidg
+    :OPSTAT_TAG_wo_host: ifirmawoapps01
+    :OPSTAT_TAG_wo_instance_id: '202'
+  :values:
+    :active_sessions: 17
+    :transactions: 162598
+    :average_idle_period: 6.851
+    :average_transaction_time: 0.001
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: ceidg
+    :OPSTAT_TAG_wo_host: ifirmawoapps01
+    :OPSTAT_TAG_wo_instance_id: '203'
+  :values:
+    :active_sessions: 22
+    :transactions: 162423
+    :average_idle_period: 6.858
+    :average_transaction_time: 0.001
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: PitRoczny2011
+    :OPSTAT_TAG_wo_host: ifirmawoapps02
+    :OPSTAT_TAG_wo_instance_id: '103'
+  :values:
+    :active_sessions: 964
+    :transactions: 3788
+    :average_idle_period: 7.432
+    :average_transaction_time: 0.038
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: PitRoczny2012
+    :OPSTAT_TAG_wo_host: ifirmawoapps02
+    :OPSTAT_TAG_wo_instance_id: '104'
+  :values:
+    :active_sessions: 965
+    :transactions: 3789
+    :average_idle_period: 7.42
+    :average_transaction_time: 0.048
+    :deaths: 3
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: PitRoczny2013
+    :OPSTAT_TAG_wo_host: ifirmawoapps02
+    :OPSTAT_TAG_wo_instance_id: '202'
+  :values:
+    :active_sessions: 3319
+    :transactions: 3796
+    :average_idle_period: 7.466
+    :average_transaction_time: 0.039
+    :deaths: 20
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: PitRoczny2014
+    :OPSTAT_TAG_wo_host: ifirmawoapps02
+    :OPSTAT_TAG_wo_instance_id: '105'
+  :values:
+    :active_sessions: 3315
+    :transactions: 3792
+    :average_idle_period: 7.454
+    :average_transaction_time: 0.047
+    :deaths: 20
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: AllegroLimit
+    :OPSTAT_TAG_wo_host: ifirmawoapps01
+    :OPSTAT_TAG_wo_instance_id: '301'
+  :values:
+    :active_sessions: 481
+    :transactions: 147434
+    :average_idle_period: 7.454
+    :average_transaction_time: 0.103
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: PitRoczny2015
+    :OPSTAT_TAG_wo_host: ifirmawoapps02
+    :OPSTAT_TAG_wo_instance_id: '106'
+  :values:
+    :active_sessions: 81
+    :transactions: 242689
+    :average_idle_period: 7.469
+    :average_transaction_time: 0.045
+    :deaths: 0
+    :refusing_new_sessions: false
+    :auto_recover: false
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: PitRoczny2016
+    :OPSTAT_TAG_wo_host: ifirmawoapps02
+    :OPSTAT_TAG_wo_instance_id: '107'
+  :values:
+    :active_sessions: 1
+    :transactions: 248205
+    :average_idle_period: 7.391
+    :average_transaction_time: 0.021
+    :deaths: 1
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: PitRoczny2017
+    :OPSTAT_TAG_wo_host: ifirmawoapps02
+    :OPSTAT_TAG_wo_instance_id: '201'
+  :values:
+    :active_sessions: 14
+    :transactions: 277516
+    :average_idle_period: 6.616
+    :average_transaction_time: 0.032
+    :deaths: 2
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200
+- :tags:
+    :OPSTAT_TAG_wo_app: PitRoczny2017
+    :OPSTAT_TAG_wo_host: ifirmawoapps02
+    :OPSTAT_TAG_wo_instance_id: '202'
+  :values:
+    :active_sessions: 11
+    :transactions: 278016
+    :average_idle_period: 6.604
+    :average_transaction_time: 0.033
+    :deaths: 2
+    :refusing_new_sessions: false
+    :auto_recover: true
+  :time: 2020-04-04 12:02:02.000000000 +0200

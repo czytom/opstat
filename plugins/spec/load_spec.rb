@@ -8,8 +8,8 @@ describe 'Load' do
 
       it 'returns report with all parsed params when input data are correct' do
         data = File.readlines('./spec/fixtures/parser_load.txt')
-        result_expected = [{:load_1m=>0.0, :load_5m=>0.01, :load_15m=>0.05, :threads_running=>1, :threads=>167}]
         time = Time.now
+        result_expected = [{:time => time, :values => {:load_1m=>0.0, :load_5m=>0.01, :load_15m=>0.05, :threads_running=>1, :threads=>167}}]
         expect(@parser.parse_data(data: data, time: time)).to eq result_expected
       end
       

@@ -12,7 +12,10 @@ module Parsers
       parsed_data.each do |row|
         row_data = row.to_hash
         report_values = row.to_hash
-        report = {:time => time, :tags => {'OPSTAT_TAG_svname' => report_values.delete(:svname), 'OPSTAT_TAG_pxname' => report_values.delete(:pxname)}}
+        svname = report_values.delete(:svname)
+        pxname = report_values.delete(:pxname)
+        next if pxname.nil? or svname.nil?
+        report = {:time => time, :tags => {'OPSTAT_TAG_svname' => svname, 'OPSTAT_TAG_pxname' => pxname}}
         row_data.each_pair do |key,value|
           report_values.delete(key) if value.nil?
         end

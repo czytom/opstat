@@ -8,8 +8,8 @@ describe 'Memory' do
 
       it 'returns report with all parsed params when input data are correct' do
         data = File.readlines('./spec/fixtures/parser_memory.txt')
-        result_expected = [{:total=>4110504, :free=>202828, :used=>378472, :cached=>3202196, :buffers=>327008, :swap_total=>0, :swap_free=>0, :swap_used=>0}]
         time = Time.now
+        result_expected = [{:time =>  time, :values => {:total=>4110504, :free=>202828, :used=>378472, :cached=>3202196, :buffers=>327008, :swap_total=>0, :swap_free=>0, :swap_used=>0}}]
         expect(@parser.parse_data(data: data, time: time)).to eq result_expected
       end
       

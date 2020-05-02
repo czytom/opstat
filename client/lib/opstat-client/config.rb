@@ -10,15 +10,22 @@ module Opstat
     end
 
     def load_config(config_file)
+      system_config_dir = '/etc/opstat'
+      system_config_path = system_config_dir + '/opstat.yml'
+      system_plugins_config_dir = system_config_dir + '/plugins/'
       unless File.exists?(config_file)
         preconfig_logger.info 'No config file - create config file with default settings. Please set correct MQ settings'
         default_config_path = File.dirname(File.expand_path(__FILE__)) + '/config/opstat.yml'
-	system_config_dir = '/etc/opstat'
-	system_config_path = system_config_dir + '/opstat.yml'
 	FileUtils.mkdir(system_config_dir) unless File.exists?(system_config_dir)
+	FileUtils.mkdir(system_plugins_config_dir) unless File.exists?(system_plugins_config_dir)
 	FileUtils.cp(default_config_path,system_config_path)
       end
+      preconfig_logger.info "Loading config from #{config_file}"
       @config = YAML.load_file(config_file)
+      Dir.glob(system_plugins_config_dir + '*.yml').each do |file|
+        preconfig_logger.info "Loading config from #{file}"
+        @config['plugins'][File.basename(file,'.yml')] = YAML.load_file(file)
+      end
       self.set_defaults
     end
 

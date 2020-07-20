@@ -23,7 +23,7 @@ class FreeswitchCalls < Task
   def sql
     number_to_name = @operators.values.flatten.map {|l| "when '#{l['number']}' then '#{l['name']}'"}.join(' ')
     number_to_department = @operators.values.flatten.map {|l| "when '#{l['number']}' then '#{l['department']}'"}.join(' ')
-    where_clause = @operators.map {|context, operators| "(a.context='#{context}' and a.destination_number in (#{operators.map{|o| "'#{o['number']}'"}.join(',')}))"}.join(' or ')
+    where_clause = @operators.map {|context, operators| "(b.context='#{context}' and a.destination_number in (#{operators.map{|o| "'#{o['number']}'"}.join(',')}))"}.join(' or ')
 
     sql = "SELECT b.caller_id_number, datetime(a.start_stamp,'utc') as time, datetime(a.answer_stamp,'utc') as answer_stamp, datetime(a.end_stamp,'utc') as end_stamp, a.duration, a.billsec, case a.destination_number  #{number_to_name} end as operator, case a.destination_number #{number_to_department} end as department, a.destination_number FROM cdr a inner join cdr b on a.bleg_uuid = b.uuid WHERE a.hangup_cause='NORMAL_CLEARING' and a.answer_stamp >= date('now') and (#{where_clause})"
     return sql

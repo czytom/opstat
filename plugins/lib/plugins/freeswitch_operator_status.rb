@@ -19,6 +19,7 @@ class FreeswitchOperatorStatus < Task
   end
 
   def operator_status_get_cmd
+    p ERB.new(@operator_status_cmd_template).result( binding )
     ERB.new(@operator_status_cmd_template).result( binding )
   end
 
@@ -27,7 +28,7 @@ class FreeswitchOperatorStatus < Task
   end
 
   def sql
-    sql = "select datetime(created,'utc') as created,state,cid_num,dest,callstate from basic_calls"
+    sql = "select fifo_name,originate_string,start_time from fifo_outbound where start_time<>0 and stop_time=0"
     return sql
   end
 end

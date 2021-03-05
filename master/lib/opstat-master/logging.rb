@@ -2,7 +2,6 @@ require 'log4r'
 
 module Opstat
 module Logging
-  extend self
   def oplogger
     return @oplogger if @oplogger
     @oplogger = Log4r::Logger.new self.class.to_s

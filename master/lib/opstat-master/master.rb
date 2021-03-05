@@ -7,29 +7,21 @@
 
       hostname = queue_data["hostname"]
       ip = queue_data['ip_address']
+      client_version = queue_data['version']
       send_data_interval = queue_data['send_data_interval']
 
       queue_data["collected_data"].each do |data|
-        host = Host.find_or_create_by(hostname: hostname, ip_address: ip)
-        plugin = Plugin.find_or_create_by(type: data['plugin'], host_id: host.id)
+	host = {hostname: hostname, ip_address: ip}
+	plugin = {type: data['plugin']}
 	host['send_data_interval'] = send_data_interval
 	plugin['interval'] = data['interval']
-	plugin_dead_ratio = 2
-	unless plugin['interval'].nil?
-	  if plugin['interval'] > host['send_data_interval']
-	    plugin_is_alive_interval = data['interval'] * plugin_dead_ratio
-	  else
-	    plugin_is_alive_interval = host['send_data_interval'] * plugin_dead_ratio
-	  end
-	  plugin['is_alive_time'] = Time.now + plugin_is_alive_interval
-	end
-
-        plugin.save
         Opstat::Parsers::Master.instance.parse_and_save(:host => host, :plugin_data => data, :plugin => plugin)
       end
     end
   end
 
+#TODO EM AMQP reconnect
+##TODO - AMQP config data from /etc
 module Opstat
 module Master
 extend Opstat::Logging

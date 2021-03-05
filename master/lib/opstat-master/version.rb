@@ -1,5 +1,5 @@
 module Opstat
-  VERSION = "0.0.3"
+  VERSION = "0.0.3.1"
 
   def Opstat.version
     VERSION

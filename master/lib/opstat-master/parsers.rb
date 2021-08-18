@@ -15,12 +15,13 @@ module Parsers
       host = params[:host]
       data = params[:plugin_data]['data']
       time = Time.parse(params[:plugin_data]['timestamp'])
-      oplogger.info "Saving parsed data collected on #{time} from (plugin:#{plugin[:type]} #{host[:hostname]}) "
+      oplogger.info "Parsing data collected on #{time} from (plugin:#{plugin[:type]} #{host[:hostname]}) "
       begin
         reports = @parsers[plugin[:type]].parse_data(data: data, time: time)
       #TODO save errors to db
       rescue Exception => e
         oplogger.error "current params #{params}"
+	return 
 	raise e
       end
       if reports.nil? or reports.empty?
@@ -31,8 +32,15 @@ module Parsers
 	default_tags = { :hostname => host[:hostname] }
         report[:tags] ||= {}
         measurement_tags = report[:tags].merge(default_tags)
+	begin
+
         measurement = { :values => report[:values], :timestamp => report[:time].to_time.to_i, :tags => measurement_tags, :name => plugin['type'] }
+        oplogger.info "Saving parsed data collected on #{time} from (plugin:#{plugin[:type]} #{host[:hostname]}) "
 	Opstat::DB::Influx.instance.write_point(plugin[:type], measurement)
+	rescue 
+	next
+	end
+
       end
     end
   end	     

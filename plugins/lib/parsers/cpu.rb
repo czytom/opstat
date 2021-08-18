@@ -10,6 +10,7 @@ module Parsers
         case line
         when /(?<OPSTAT_TAG_cpu_id>cpu\S*)\s+(?<user>\d+)\s+(?<nice>\d+)\s+(?<system>\d+)\s+(?<idle>\d+)\s+(?<iowait>\d+)\s+(?<irq>\d+)\s+(?<softirq>\d+).*/
           report = {:values => {
+	      :OPSTAT_TAG_cpu_id => $~[:OPSTAT_TAG_cpu_id],
               :user => $~[:user].to_i,
               :nice => $~[:nice].to_i,
               :system => $~[:system].to_i,
@@ -18,7 +19,6 @@ module Parsers
               :irq => $~[:irq].to_i,
               :softirq => $~[:softirq].to_i
 	    },
-	    :tags => {:OPSTAT_TAG_cpu_id => $~[:OPSTAT_TAG_cpu_id]},
             :time => time
             }
           if $~[:OPSTAT_TAG_cpu_id] == 'cpu'
@@ -27,13 +27,13 @@ module Parsers
             reports << report
           end
         when /procs_blocked\s+(?<processes_blocked>\d+)/
-          cpu_summary_report[:values][:processes_blocked] = $~[:processes_blocked].to_i
+          cpu_summary_report[:processes_blocked] = $~[:processes_blocked].to_i
         when /procs_running\s+(?<processes_running>\d+)/
-          cpu_summary_report[:values][:processes_running] = $~[:processes_running].to_i
+          cpu_summary_report[:processes_running] = $~[:processes_running].to_i
         when /processes\s+(?<processes>\d+)/
-          cpu_summary_report[:values][:processes] = $~[:processes].to_i
+          cpu_summary_report[:processes] = $~[:processes].to_i
         when /ctxt\s+(?<context_switches>\d+)/
-          cpu_summary_report[:values][:context_switches] = $~[:context_switches].to_i
+          cpu_summary_report[:context_switches] = $~[:context_switches].to_i
         end
       end
       reports << cpu_summary_report

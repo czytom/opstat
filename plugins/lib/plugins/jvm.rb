@@ -9,12 +9,15 @@ class Jvm < Task
   end
 
   def parse
-    snmp_io = IO.popen(@snmp_cmd)
-    report  = snmp_io.readlines.join
-    snmp_io.close
+    snmpIO = IO.popen(@snmp_cmd)
+    report  = snmpIO.readlines.join
+    snmpIO.close
     return report
   end
 
 end
 end
 end
+#for test
+# check snmp is installed
+# check port is open - snmp is accessible

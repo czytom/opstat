@@ -48,17 +48,21 @@ module Parsers
             oldest_call_waiting_start_timestamp ||= time.to_s #due to some strange behaviour - there are data call without position and other needed params
             report[:values][:calling_numbers] = fifo[:callers][:caller][:caller_id_number]
           else
+	    begin
             oldest_call_waiting_start_timestamp = fifo[:callers][:caller].find{|call| call[:position].to_i == 1}[:timestamp]
+	    rescue
+            oldest_call_waiting_start_timestamp = fifo[:callers][:caller].find{|call| call[:position].to_i == 2}[:timestamp]
+	    end
+
             report[:values][:calling_numbers] = fifo[:callers][:caller].map{|call| call[:caller_id_number]}.join(' ')
           end
           report[:values][:queue_max_waiting_time] = (time - Time.parse(oldest_call_waiting_start_timestamp)).to_i
         end
         reports << report
       end
+
       return reports
     end
   end
 end
 end 
-
-

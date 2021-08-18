@@ -15,11 +15,11 @@ class Fpm < Task
       oplogger.debug "getting #{pool} statistics"
       env = {"REQUEST_METHOD" => options['request_method'], "SCRIPT_NAME" => options['status_url'], "SCRIPT_FILENAME" => options['status_url'], "QUERY_STRING" => 'json'}
       oplogger.debug "cgi-fcgi environment: #{env.inspect}"
-      fpm_io = IO.popen([env, 'cgi-fcgi','-bind','-connect',options['fcgi_socket'] ])
-      pool_report  = fpm_io.readlines
+      fpmIO = IO.popen([env, 'cgi-fcgi','-bind','-connect',options['fcgi_socket'] ])
+      pool_report  = fpmIO.readlines
       oplogger.debug "#{pool} statistics: #{pool_report}"
       report << pool_report
-      fpm_io.close
+      fpmIO.close
     end
     return report
   end
@@ -27,3 +27,7 @@ class Fpm < Task
 end
 end
 end
+#TO CHECK -cgi-fcgi installed
+#- pm.status_path  property set in pool configuration
+
+

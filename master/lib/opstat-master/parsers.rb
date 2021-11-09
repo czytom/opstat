@@ -34,7 +34,7 @@ module Parsers
         measurement_tags = report[:tags].merge(default_tags)
 	begin
 
-        measurement = { :values => report[:values], :timestamp => report[:time].to_time.to_i, :tags => measurement_tags, :name => plugin['type'] }
+        measurement = { :values => report[:values], :timestamp => report[:time].to_time.to_i, :tags => measurement_tags, :name => plugin[:type] }
         oplogger.info "Saving parsed data collected on #{time} from (plugin:#{plugin[:type]} #{host[:hostname]}) "
 	Opstat::DB::Influx.instance.write_point(plugin[:type], measurement)
 	rescue 

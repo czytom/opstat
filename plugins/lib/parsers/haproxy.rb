@@ -14,7 +14,7 @@ module Parsers
         report_values = row.to_hash
         report = {:time => time, :tags => {'OPSTAT_TAG_svname' => report_values.delete(:svname), 'OPSTAT_TAG_pxname' => report_values.delete(:pxname)}}
         row_data.each_pair do |key,value|
-          report_values.delete(key) if value.nil?
+          report_values.delete(key) if value.nil? or value == '-'
         end
         report[:values] = report_values
         reports << report

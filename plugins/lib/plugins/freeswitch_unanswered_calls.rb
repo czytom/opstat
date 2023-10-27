@@ -20,7 +20,7 @@ class FreeswitchUnansweredCalls < Task
   end
 
   def sql
-    sql = "SELECT inbound.caller_id_number, inbound.destination_number, datetime(inbound.start_stamp,'utc') as start_time, datetime(inbound.answer_stamp,'utc') as answer_time, datetime(inbound.end_stamp,'utc') as end_stamp, inbound.duration, inbound.billsec FROM cdr inbound left join cdr out on inbound.uuid=out.bleg_uuid  WHERE inbound.context='power-fifos' and inbound.start_stamp >= date('now') and out.start_stamp is null order by inbound.start_stamp asc;"
+    sql = "SELECT inbound.caller_id_number, inbound.destination_number, datetime(inbound.start_stamp,'utc') as time, datetime(inbound.answer_stamp,'utc') as answer_stamp, datetime(inbound.end_stamp,'utc') as end_stamp, inbound.duration, inbound.billsec FROM cdr inbound left join cdr out on inbound.uuid=out.bleg_uuid  WHERE inbound.context='power-fifos' and inbound.start_stamp >= date('now') and out.start_stamp is null order by inbound.start_stamp asc;"
     return sql
   end
 end

@@ -4,15 +4,27 @@ extend Opstat::Logging
   def self.create_plugins(queue)
     plugins = []
     Opstat::Config.instance.get('plugins').each_pair do |name, conf|
-      conf['log_level'] ||=  Opstat::Config.instance.get('client')['log_level']
-      oplogger.info "Loading #{name} plugin with properties #{conf.inspect}"
-      Opstat::Plugins.load_plugin(name)
-      plugin_name = name
-      class_name = "Opstat::Plugins::#{name}"
-      task = Opstat::Common.constantize(class_name).new(plugin_name, queue, conf)
-      plugins << task
+      if conf.is_a?(Array)
+        conf.each do |plugin_instance_config|
+          task = Opstat::Plugins.create_task_from_config(name, queue, plugin_instance_config)
+          plugins << task
+        end
+      else
+        task = Opstat::Plugins.create_task_from_config(name, queue, conf)
+        plugins << task
+      end
     end
     plugins
+  end
+  
+  def self.create_task_from_config(name, queue, conf)
+    conf['log_level'] ||=  Opstat::Config.instance.get('client')['log_level']
+    oplogger.info "Loading #{name} plugin with properties #{conf.inspect}"
+    Opstat::Plugins.load_plugin(name)
+    plugin_name = name
+    class_name = "Opstat::Plugins::#{name}"
+    task = Opstat::Common.constantize(class_name).new(plugin_name, queue, conf)
+    return task
   end
 
 

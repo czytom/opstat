@@ -1,0 +1,34 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '\d+\.\d+\.\d+' 
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7' # Specify your Ruby version
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+
+      - name: Build and push gems
+        env:
+          RUBYGEMS_AUTH_TOKEN: ${{ secrets.RUBYGEMS_AUTH_TOKEN }} # Set this secret in your GitHub repository
+        run: |
+          for dir in plugins master client; do
+            cd $dir
+            gem build *.gemspec
+            gem push *.gem
+            cd ..
+          done

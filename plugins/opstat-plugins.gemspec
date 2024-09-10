@@ -6,7 +6,6 @@ require '../version'
 Gem::Specification.new do |s|
   s.name        = 'opstat-plugins'
   s.version     = Opstat::VERSION
-  s.date        = '2017-06-13'
   s.summary     = "Opstat plugins"
   s.description = "All opstat plugins"
   s.authors     = ["Krzysztof Tomczyk"]

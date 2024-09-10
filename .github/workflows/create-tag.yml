@@ -1,4 +1,4 @@
-name: Create Tag on Merge to Master
+name: Create Tag on Merge to Master, build and push gems to RubyGems
 
 on:
   push:
@@ -31,3 +31,23 @@ jobs:
 
       - name: Output the tag name
         run: echo "Created tag for version v${{ env.VERSION }}"
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7' # Specify your Ruby version
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+
+      - name: Build and push gems
+        env:
+          RUBYGEMS_AUTH_TOKEN: ${{ secrets.RUBYGEMS_AUTH_TOKEN }} # Set this secret in your GitHub repository
+        run: |
+          for dir in plugins master client; do
+            cd $dir
+            gem build *.gemspec
+            gem push *.gem
+            cd ..
+          done

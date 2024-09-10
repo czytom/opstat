@@ -30,4 +30,4 @@ jobs:
           git push origin "v${{ env.VERSION }}"
 
       - name: Output the tag name
-        run: echo "Created tag: v${{ env.VERSION }}"
+        run: echo "Created tag for version v${{ env.VERSION }}"

@@ -43,11 +43,21 @@ jobs:
 
       - name: Build and push gems
         env:
-          RUBYGEMS_AUTH_TOKEN: ${{ secrets.RUBYGEMS_AUTH_TOKEN }} # Set this secret in your GitHub repository
+          GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_AUTH_TOKEN }} # Set this secret in your GitHub repository
         run: |
           for dir in plugins master client; do
             cd $dir
             gem build *.gemspec
-            gem push *.gem
+            if [ $? -eq 0 ]; then
+              echo "Successfully built gem in $dir"
+              gem push *.gem --verbose
+              if [ $? -ne 0 ]; then
+                echo "Failed to push gem in $dir"
+                exit 1
+              fi
+            else
+              echo "Failed to build gem in $dir"
+              exit 1
+            fi
             cd ..
           done

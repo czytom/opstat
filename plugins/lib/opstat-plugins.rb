@@ -1,4 +1,4 @@
-require 'logging.rb'
+require_relative 'logging.rb'
 module Opstat
   module Plugins
     def self.load_models

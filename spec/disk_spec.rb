@@ -1,12 +1,3 @@
-module Opstat
-  class Config
-    include Singleton
-    def get(x)
-      {'log_level' => 'INFO'}
-    end
-  end
-end
-
 describe 'Disk' do
   describe 'Parsers' do
     describe 'load parser' do

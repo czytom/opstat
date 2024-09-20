@@ -97,6 +97,4 @@ RSpec.configure do |config|
 =end
 end
 
-
-#local part
-require './lib/opstat-plugins.rb'
+require './plugins/lib/opstat-plugins.rb'

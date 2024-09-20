@@ -28,13 +28,19 @@ module Parsers
         return
       end
       reports.each do |report|
+        if report.has_key?(:meta_type)
+          plugin_type = plugin.type + '.' + report[:meta_type]
+        else
+          plugin_type = plugin.type
+        end
+
 	default_tags = { :host_id => host.id, :plugin_id => plugin.id, :hostname => host[:hostname] }
 	report_data = report.select{|k,v| not k.to_s.starts_with?('OPSTAT_TAG_')}
 	report_tags = report.select{|k,v| k.to_s.starts_with?('OPSTAT_TAG_')}
 	report_tags ||= {}
 	measurement_tags = report_tags.merge(default_tags)
-	measurement = { :values => report_data, :timestamp => time.to_i, :tags => measurement_tags, :name => plugin.type }
-	Opstat::DB::Influx.instance.write_point(plugin.type, measurement)
+	measurement = { :values => report_data, :timestamp => time.to_i, :tags => measurement_tags, :name => plugin_type }
+	Opstat::DB::Influx.instance.write_point(plugin_type, measurement)
       end
     end
   end	     

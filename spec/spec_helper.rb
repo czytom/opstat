@@ -98,3 +98,4 @@ RSpec.configure do |config|
 end
 
 require './plugins/lib/opstat-plugins.rb'
+require './master/lib/opstat-master/config.rb'

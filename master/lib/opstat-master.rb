@@ -20,13 +20,29 @@ require 'opstat-master/logging.rb'
 require 'opstat-master/parsers.rb'
 
 require 'opstat-master/master.rb'
-# see the bottom of the file for further inclusions
+options = {}
+optparse = OptionParser.new do|opts|
+  # Set a banner, displayed at the top
+  # of the help screen.
+  opts.banner = "Usage: command [options]"
 
-#------------------------------------------------------------
-# the top-level module
-#
-# all this really does is dictate how the whole system behaves, through
-# preferences for things like debugging
-#
-# it's also a place to find top-level commands like 'debug'
+  options[:verbose] = false
+    opts.on( '-v', '--verbose', 'Output more information' ) do
+    options[:verbose] = true
+  end
 
+  #TODO required options
+  opts.on( '-c', '--config-file String', :required,  "Config file path" ) do|l|
+    options[:config_file] = l
+  end
+  options[:config_file] ||= '/etc/opstat/opstat.yml'
+
+  opts.on( '-h', '--help', 'Display this screen' ) do
+    puts opts
+    exit
+  end
+end
+optparse.parse!
+
+Opstat::Config.instance.init_config(options)
+ 

@@ -11,6 +11,7 @@ module Logging
     @logger.outputters << outputter
     @logger
   end
+
   def oplogger
     return @logger if @logger
     @logger = Log4r::Logger.new self.class.to_s
@@ -20,8 +21,9 @@ module Logging
     @logger.outputters << outputter
     @logger
   end
+
   def log_level
-    @log_level ||= Opstat::Config.instance.get('client')['log_level']
+    @log_level ||= (Opstat::Config.instance.get('client') || {})['log_level'] || 'INFO'
     @log_level
   end
 end

@@ -3,14 +3,13 @@ module Parsers
   class Cpu < Parser
     include Opstat::Logging
 
-    def parse_specific_data(data:, time:, hostname:, plugin_type:)
+    def parse_specific_data(data:, time:, plugin_type:, tags:)
       reports = []
-      system_report = {:values => {}, :time => time , :plugin_type => "#{plugin_type}.system", :hostname => hostname}
+      system_report = {:values => {}, :time => time , :plugin_type => "#{plugin_type}.system", :tags => tags}
       data.each do |line|
         case line
           when /(?<OPSTAT_TAG_cpu_id>cpu\S*)\s+(?<user>\d+)\s+(?<nice>\d+)\s+(?<system>\d+)\s+(?<idle>\d+)\s+(?<iowait>\d+)\s+(?<irq>\d+)\s+(?<softirq>\d+).*/
             reports << {:values => {
-	      :OPSTAT_TAG_cpu_id => $~[:OPSTAT_TAG_cpu_id],
               :user => $~[:user].to_i,
               :nice => $~[:nice].to_i,
               :system => $~[:system].to_i,
@@ -21,7 +20,7 @@ module Parsers
 	    },
             :time => time,
             :plugin_type => plugin_type,
-            :hostname => hostname
+            :tags => tags.merge({:OPSTAT_TAG_cpu_id => $~[:OPSTAT_TAG_cpu_id]})
             }
           when /procs_blocked\s+(?<processes_blocked>\d+)/
             system_report[:values][:processes_blocked] = $~[:processes_blocked].to_i

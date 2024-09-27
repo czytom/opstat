@@ -40,7 +40,7 @@ module Parsers
       plugin_type = extract_plugin_type(params)
 
       oplogger.info "Saving parsed data collected on #{time} from #{hostname}(plugin:#{plugin_type}) "
-      parse_specific_data(data: data, time: time, hostname: hostname, plugin_type: plugin_type)
+      parse_specific_data(data: data, time: time, tags: build_default_tags(params), plugin_type: plugin_type)
     end
 
     def extract_data(params)
@@ -64,7 +64,7 @@ module Parsers
     end
 
     def build_default_tags(params)
-      params[:host][:hostname]
+      {:hostname => params[:host][:hostname]}
     end
   end
 end

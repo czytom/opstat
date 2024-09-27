@@ -3,9 +3,9 @@ module Parsers
   class Cpu < Parser
     include Opstat::Logging
 
-    def parse_specific_data(data:, time:, host:, plugin_type:)
+    def parse_specific_data(data:, time:, hostname:, plugin_type:)
       reports = []
-      system_report = {:values => {}, :time => time , :plugin_type => 'system'}
+      system_report = {:values => {}, :time => time , :plugin_type => "#{plugin_type}.system", :hostname => hostname}
       data.each do |line|
         case line
           when /(?<OPSTAT_TAG_cpu_id>cpu\S*)\s+(?<user>\d+)\s+(?<nice>\d+)\s+(?<system>\d+)\s+(?<idle>\d+)\s+(?<iowait>\d+)\s+(?<irq>\d+)\s+(?<softirq>\d+).*/
@@ -19,7 +19,9 @@ module Parsers
               :irq => $~[:irq].to_i,
               :softirq => $~[:softirq].to_i
 	    },
-            :time => time
+            :time => time,
+            :plugin_type => plugin_type,
+            :hostname => hostname
             }
           when /procs_blocked\s+(?<processes_blocked>\d+)/
             system_report[:values][:processes_blocked] = $~[:processes_blocked].to_i

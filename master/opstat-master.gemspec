@@ -29,5 +29,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency "xmlhasher"
   spec.add_dependency "log4r"
   spec.add_dependency "influxdb"
-  spec.add_dependency "mongoid", "~> 6"
 end

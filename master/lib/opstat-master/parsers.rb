@@ -21,45 +21,9 @@ module Parsers
         return
       end
       reports.each do |report|
-
-	report_data = report.select{|k,v| not k.to_s.starts_with?('OPSTAT_TAG_')}
-	report_tags = report.select{|k,v| k.to_s.starts_with?('OPSTAT_TAG_')}
-	report_tags ||= {}
-	measurement_tags = report_tags.merge(default_tags)
-	measurement = { :values => report_data, :timestamp => time.to_i, :tags => measurement_tags, :name => plugin_type }
-	Opstat::DB::Influx.instance.write_point(plugin_type, measurement)
+	Opstat::DB::Influx.instance.write_point(plugin_type, report)
       end
     end
   end	     
 end
 end
-
-class Report
-  include Mongoid::Document
-  include Mongoid::Attributes::Dynamic
-  store_in collection: "opstat.reports"
-end
-
-class User
-  include Mongoid::Document
-  include Mongoid::Attributes::Dynamic
-  include Mongoid::Timestamps
-  store_in collection: "opstat.users"
-end
-
-class Host
-  include Mongoid::Document
-  include Mongoid::Attributes::Dynamic
-  include Mongoid::Timestamps
-  store_in collection: "opstat.hosts"
-  has_many :plugins
-end
-
-class Plugin
-  include Mongoid::Document
-  include Mongoid::Attributes::Dynamic
-  include Mongoid::Timestamps
-  store_in collection: "opstat.plugins"
-  belongs_to :host
-end
-

@@ -23,10 +23,6 @@ module Opstat
       @config['client']['log_level'] ||= "WARN"
     end
 
-    def get_mongo_config_file_path
-      "#{File.dirname(@config_file)}/mongoid.yml"
-    end
-
     def get_influx_config
        get('influxdb')
     end

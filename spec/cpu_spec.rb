@@ -10,14 +10,16 @@ describe 'Cpu' do
 
       it 'returns report with all parsed params when input data are correct' do
         cpu_data = File.readlines('./spec/fixtures/parser_cpu_single_core.txt')
+        hostname = 'test'
         params = {
-                   :plugin_name => 'cpu',
+                   :plugin => { :type => 'cpu'},
+                   :host => { :hostname => hostname},
                    :data => cpu_data,
                    :time => @time
                  }
-        result_expected = [{:time => @time, :values => { :OPSTAT_TAG_cpu_id=>"cpu", :user=>1250728, :nice=>0, :system=>12334059, :idle=>1072246656, :iowait=>2258392, :irq=>1882, :softirq=>16720396}},
-                           {:time => @time, :values => {:OPSTAT_TAG_cpu_id=>"cpu0", :user=>1250728, :nice=>0, :system=>12334059, :idle=>1072246656, :iowait=>2258392, :irq=>1882, :softirq=>16720396 }},
-                           { :meta_type => "system", :time => @time, :values => {:context_switches=>28076998076, :processes=>46027160, :processes_blocked=>0, :processes_running=>1}}]
+        result_expected = [{ :plugin_type => "cpu", :time => @time, :values => { :OPSTAT_TAG_cpu_id=>"cpu", :user=>1250728, :nice=>0, :system=>12334059, :idle=>1072246656, :iowait=>2258392, :irq=>1882, :softirq=>16720396}, :hostname => hostname},
+                           { :plugin_type => "cpu", :time => @time, :values => {:OPSTAT_TAG_cpu_id=>"cpu0", :user=>1250728, :nice=>0, :system=>12334059, :idle=>1072246656, :iowait=>2258392, :irq=>1882, :softirq=>16720396 }, :hostname => hostname},
+                           { :plugin_type => "cpu.system", :time => @time, :values => {:context_switches=>28076998076, :processes=>46027160, :processes_blocked=>0, :processes_running=>1}, :hostname => hostname}]
         expect(@cpu_parser.parse_data(params)).to eq result_expected
       end
       

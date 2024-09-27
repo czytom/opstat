@@ -36,39 +36,35 @@ module Parsers
     def parse_data(params)
       data = extract_data(params)
       time = extract_time(params)
-      host = extract_host(params)
+      hostname= extract_hostname(params)
       plugin_type = extract_plugin_type(params)
 
-      oplogger.info "Saving parsed data collected on #{time} from #{host.id}(plugin:#{plugin_type} #{host[:hostname]}) "
-      parse_specific_data(data: data, time: time, host: host, plugin_type: plugin_type)
+      oplogger.info "Saving parsed data collected on #{time} from #{hostname}(plugin:#{plugin_type}) "
+      parse_specific_data(data: data, time: time, hostname: hostname, plugin_type: plugin_type)
     end
 
     def extract_data(params)
-      params['data']
+      params[:data]
     end
 
     def extract_time(params)
       params[:time]
     end
 
-    def extract_host(params)
-      params[:host]
+    def extract_hostname(params)
+      params[:host][:hostname]
     end
 
     def extract_plugin_type(params)
-      params[:plugin_name]
+      params[:plugin][:type]
     end
 
-    def parse_specific_data(data:, time:, host:, plugin_type:)
+    def parse_specific_data(data:, time:, hostname:, plugin_type:)
       raise NotImplementedError, "You must implement `parse_specific_data` in subclasses"
     end
 
-    def build_default_tags(host, plugin)
-      {
-        host_id: host.id,
-        plugin_id: plugin.id,
-        hostname: host[:hostname]
-      }
+    def build_default_tags(params)
+      params[:host][:hostname]
     end
   end
 end

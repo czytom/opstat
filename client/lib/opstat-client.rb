@@ -4,6 +4,7 @@ rescue LoadError
 end
 require 'singleton'
 require 'opstat-client/common.rb'
+require 'opstat-client/version.rb'
 require 'opstat-client/logging.rb'
 require 'opstat-client/config.rb'
 require 'yaml'

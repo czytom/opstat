@@ -1,3 +1,4 @@
+require_relative 'version.rb'
 require_relative 'logging.rb'
 require_relative 'parsers.rb'
 module Opstat

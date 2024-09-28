@@ -4,5 +4,4 @@ module Opstat
   def Opstat.version
     VERSION
   end
-
 end

@@ -25,7 +25,7 @@ module SendData
       # TODO auto register - assign some unique id for a new host instead of hostname, ip_address pai
       data_to_send[:hostname] = @hostname
       data_to_send[:ip_address] = @ip_address
-      data_to_send[:version] = Opstat.version
+      data_to_send[:version] = Opstat::VERSION
       custom_tags = Opstat::Config.instance.get('client')['custom_tags']
       data_to_send[:custom_tags] = Opstat::Config.instance.get('client')['custom_tags'] if custom_tags
       data_to_send[:send_data_interval] = Opstat::Config.instance.get('client')['send_data_interval']

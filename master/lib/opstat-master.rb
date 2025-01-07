@@ -1,6 +1,8 @@
 begin
   require 'rubygems'
 rescue LoadError
+  puts 'unable to load rubygems'
+  exit 1
 end
 require 'yaml'
 require 'log4r'
@@ -14,10 +16,10 @@ require 'influxdb'
 require 'activemodel-serializers-xml'
 require 'opstat-master/config.rb'
 require 'opstat-master/common.rb'
-require 'opstat-master/db/mongo.rb'
 require 'opstat-master/db/influx.rb'
 require 'opstat-master/logging.rb'
 require 'opstat-master/parsers.rb'
+require 'opstat-master/exceptions_notifications.rb'
 
 require 'opstat-master/master.rb'
 # see the bottom of the file for further inclusions

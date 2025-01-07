@@ -1,6 +1,5 @@
 require 'yaml'
 module Opstat
-  # A pretty sucky config class, ripe for refactoring/improving
   class Config
   include Opstat::Logging
     include Singleton
@@ -8,19 +7,25 @@ module Opstat
     def initialize
       @configured = false
       @config = ''
-      #TODO set defaults
     end
 
     def load_config(config_file)
-      unless File.exists?(config_file)
+      system_config_dir = '/etc/opstat'
+      system_config_path = system_config_dir + '/opstat.yml'
+      system_plugins_config_dir = system_config_dir + '/plugins/'
+      unless File.exist?(config_file)
         preconfig_logger.info 'No config file - create config file with default settings. Please set correct MQ settings'
         default_config_path = File.dirname(File.expand_path(__FILE__)) + '/config/opstat.yml'
-	system_config_dir = '/etc/opstat'
-	system_config_path = system_config_dir + '/opstat.yml'
-	FileUtils.mkdir(system_config_dir) unless File.exists?(system_config_dir)
+	FileUtils.mkdir(system_config_dir) unless File.exist?(system_config_dir)
+	FileUtils.mkdir(system_plugins_config_dir) unless File.exist?(system_plugins_config_dir)
 	FileUtils.cp(default_config_path,system_config_path)
       end
+      preconfig_logger.info "Loading config from #{config_file}"
       @config = YAML.load_file(config_file)
+      Dir.glob(system_plugins_config_dir + '*.yml').each do |file|
+        preconfig_logger.info "Loading config from #{file}"
+        @config['plugins'][File.basename(file,'.yml')] = YAML.load_file(file)
+      end
       self.set_defaults
     end
 
@@ -56,7 +61,6 @@ optparse = OptionParser.new do|opts|
     options[:verbose] = true
   end
 
-  #TODO required options
   opts.on( '-c', '--config-file String', :required,  "Config file path" ) do|l|
     options[:config_file] = l
   end

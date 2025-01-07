@@ -1,0 +1,9 @@
+before_script:
+  - ruby -v                                   # Print out ruby version for debugging
+  - "mkdir -p /home/builds/admin/opstat"
+
+include:
+  - local: '/plugins/.gitlab-ci.yml'
+  - local: '/client/.gitlab-ci.yml'
+  - local: '/master/.gitlab-ci.yml'
+

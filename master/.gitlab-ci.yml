@@ -1,0 +1,8 @@
+01_create_and_install_gem_master_locally:
+  script:
+    - cd master 
+    - gem build opstat-master.gemspec
+    - "cp opstat-master-`ruby -e 'require \"./lib/opstat-master/version.rb\"; puts Opstat.version'`.gem /home/builds/admin/opstat"
+    - "gem install /home/builds/admin/opstat/opstat-master-`ruby -e 'require \"./lib/opstat-master/version.rb\"; puts Opstat.version'`.gem"
+
+

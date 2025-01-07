@@ -6,27 +6,20 @@ module Parsers
     include Opstat::Logging
 
     def parse_data(data:, time:)
+      reports = []
       white_headers = [ :svname, :qcur, :qmax, :scur, :smax, :slim, :stot, :bin, :bout, :hrsp_1xx, :hrsp_2xx, :hrsp_3xx, :hrsp_4xx, :hrsp_5xx, :hrsp_other, :req_tot, :conn_tot]
-      parsed_data = CSV.parse(data.join, { headers: true, header_converters: :symbol, converters: :all}).map{|row| Hash[row.headers[0..-1].zip(row.fields[0..-1])]}.group_by{|row| row[:_pxname]}
-      report = []  
-      yaml = []
-      parsed_data.each do |key,value| 
-        if value.first[:svname] == "FRONTEND"
-          report <<  {:stats_type => :frontend, :name => value.first[:_pxname], :summary => value.first.select { |key, value| white_headers.include?(key)}}
-        elsif value.first[:_pxname].to_s.start_with?("backend")
-          backends = { :stats_type => :backend, :name => value.first[:_pxname] }
-          instances = []
-          value.each do |backend|
-            if backend[:svname]  == "BACKEND"
-              backends[:summary] =  backend.select { |key, value| white_headers.include?(key) }
-            else
-              backends[:details] = instances.push ( backend.select { |key, value| white_headers.include?(key) } )
-            end
-          end
-          report <<  backends
+      parsed_data = CSV.parse(data.join, { headers: true, header_converters: :symbol, converters: :all})
+      parsed_data.each do |row|
+        row_data = row.to_hash
+        report_values = row.to_hash
+        report = {:time => time, :tags => {'OPSTAT_TAG_svname' => report_values.delete(:svname), 'OPSTAT_TAG_pxname' => report_values.delete(:pxname)}}
+        row_data.each_pair do |key,value|
+          report_values.delete(key) if value.nil? or value == '-'
         end
+        report[:values] = report_values
+        reports << report
       end
-      return report
+      return reports
     end
   end
 end

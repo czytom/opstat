@@ -1,0 +1,12 @@
+OpenVPN CLIENT LIST
+Updated,Tue Apr  7 23:02:14 2020
+Common Name,Real Address,Bytes Received,Bytes Sent,Connected Since
+test1@power.com.pl,9.16.17.2:40613,664913234,2156244572,Thu Mar 26 07:11:05 2020
+test23@power.com.pl,1.35.17.20:35494,557809,1049575,Tue Apr  7 21:53:36 2020
+test4@power.com.pl,8.1.17.57:57262,32422907,168046250,Tue Apr  7 06:11:59 2020
+test6@power.com.pl,82.23.45.21:49619,26116017,51707971,Tue Apr  7 08:23:13 2020
+ROUTING TABLE
+Virtual Address,Common Name,Real Address,Last Ref
+GLOBAL STATS
+Max bcast/mcast queue length,83
+END

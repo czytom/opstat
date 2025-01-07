@@ -1,5 +1,4 @@
 module Opstat
-  # A pretty sucky config class, ripe for refactoring/improving
   class Config
     include Singleton
 
@@ -7,7 +6,6 @@ module Opstat
       @configured = false
       @config = ''
       @config_file = ''
-      #TODO set defaults
     end
 
     def load_config(config_file)
@@ -30,6 +28,10 @@ module Opstat
        get('influxdb')
     end
 
+    def get_exceptions_notifiers_config
+       get('exceptions_notifiers')
+    end
+
     def get_mq_config
        get('mq')
     end
@@ -48,8 +50,6 @@ module Opstat
 end
 options = {}
 optparse = OptionParser.new do|opts|
-  # Set a banner, displayed at the top
-  # of the help screen.
   opts.banner = "Usage: command [options]"
 
   options[:verbose] = false
@@ -57,7 +57,6 @@ optparse = OptionParser.new do|opts|
     options[:verbose] = true
   end
 
-  #TODO required options
   opts.on( '-c', '--config-file String', :required,  "Config file path" ) do|l|
     options[:config_file] = l
   end

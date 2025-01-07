@@ -1,9 +1,1 @@
-Filesystem     Type        Used    Avail  Inodes  IUsed   IFree Mounted on
-/dev/xvda1     ext4     6021312  655360 188338  467022
-udev           devtmpfs       0    10240  507718    270  507448 /dev
-tmpfs          tmpfs      80408   741696  513813    318  513495 /run
-tmpfs          tmpfs          0  2055252  513813      1  513812 /dev/shm
-tmpfs          tmpfs          0     5120  513813      6  513807 /run/lock
-tmpfs          tmpfs          0  2055252  513813     13  513800 /sys/fs/cgroup
-/dev/xvda3     ext4     6555088 17789804 1638400 1298548 /var
-
+{"disk_space":["Fstem     Type           Used     Avail    Inodes  IUsed     IFree Mounted on\n","/dev/da1      ext       10779808  18463492   1966080  1514548 /\n","devtmpfs       devtmpfs          0     10240  16466481   1321  16465160 /dev\n","tmpfs          tmpfs           236  13173460  16467119    791  16466328 /run\n","cgroup_root    tmpfs             0     10240  16467119      4  16467115 /sys/fs/cgroup\n","shm            tmpfs             0  65868476  16467119      1  16467118 /dev/shm\n","/dev/da2     ext        2950384  11663064    983040  54067    928973 /var\n","/dev/xvd     ext     3377568604 271704700 244195328    294 244195034 /var/lib/mongodb\n"],"disk_io":["   7       0 loop0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n","   7       1 loop1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n","   7       2 loop2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n","   7       3 loop3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n","   7       4 loop4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n","   7       5 loop5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n","   7       6 loop6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n","   7       7 loop7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n"," 202       1 xvda1 280919 5 3761964 1475496 2292754 9526738 95942448 29457462 0 1306380 27352710 0 0 0 0\n"," 202       2 xvda2 10039 1 1233234 51497 2187480 3613483 55301440 1632060 0 9217660 467580 0 0 0 0\n"," 202       3 xvda3 439571 0 87283759 315165 22945864 6445536 2647656609 24503476 0 25969240 1220 0 0 0 0\n"]}

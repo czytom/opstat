@@ -7,7 +7,7 @@ class HaproxyTables < Task
   def initialize (name, queue, config)
     super(name, queue, config)
     @haproxy_socket = config['socket']
-    raise ArgumentError, "Socket #{path} doesn't exists or is not a UNIX socket" unless File.exists?(@haproxy_socket) and File.socket?(@haproxy_socket)
+    raise ArgumentError, "Socket #{path} doesn't exists or is not a UNIX socket" unless File.exist?(@haproxy_socket) and File.socket?(@haproxy_socket)
     self
   end
 

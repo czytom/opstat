@@ -1,12 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'opstat-plugins/version'
+require '../version'
 
 Gem::Specification.new do |s|
   s.name        = 'opstat-plugins'
   s.version     = Opstat::VERSION
-  s.date        = '2017-06-13'
   s.summary     = "Opstat plugins"
   s.description = "All opstat plugins"
   s.authors     = ["Krzysztof Tomczyk"]

@@ -1,5 +1,3 @@
-require "opstat-client/version"
-# Try to load rubygems.  Hey rubygems, I hate you.
 begin
   require 'rubygems'
 rescue LoadError

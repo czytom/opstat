@@ -1,4 +1,3 @@
-require "opstat-master/version"
 begin
   require 'rubygems'
 rescue LoadError

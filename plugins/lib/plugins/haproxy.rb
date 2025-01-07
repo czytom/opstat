@@ -1,4 +1,4 @@
-require 'open-uri'
+require 'net/http'
 module Opstat
 module Plugins
 
@@ -11,7 +11,9 @@ class Haproxy < Task
     def parse
       report = []
       begin
-        source = URI.open(@haproxy_url,open_timeout: 1, read_timeout: 1).each do |line|
+        uri = URI.parse(@haproxy_url)
+        source = Net::HTTP.get(uri)
+        source.each_line do |line|
           report << line
         end
       rescue Exception => e

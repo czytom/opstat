@@ -17,6 +17,7 @@ class Snmp < Task
   def parse
     @count_number += 1
     report = {}
+begin
     SNMP::Manager.open(:host => @snmp_host) do |manager|
       response = manager.get(@snmp_oid)
       unless response.nil?
@@ -27,6 +28,16 @@ class Snmp < Task
       end
     return report
     end
+rescue SNMP::RequestTimeout
+  report['error'] = 'Request timeout - no respnse from SNMP host'
+  return report
+rescue SNMP::HostUnavailable
+  report['error'] = 'Host unavailable'
+  return report
+rescue StandardError => e
+  report['error'] = "Unexpected error: #{e.message}"
+  return report
+end
   end
 
   def default_config
